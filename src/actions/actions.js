@@ -9,6 +9,8 @@ export const SET_DEVICE_WIDTH = "SET_DEVICE_WIDTH";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const OPEN_SIDEBAR = "OPEN_SIDEBAR";
 export const CLOSE_SIDEBAR = "CLOSE_SIDEBAR";
+export const UPDATE_LANDING = "UPDATE_LANDING";
+export const SET_FEATURED_IMAGE = "SET_FEATURED_IMAGE";
 
 export function checkDeviceWidth(x) {
   return {
@@ -17,10 +19,24 @@ export function checkDeviceWidth(x) {
   };
 }
 
+export function updateLanding() {
+  return {
+    type: "UPDATE_LANDING"
+  }
+}
+
 export function setCurrentPage(str) {
   return {
     type: "SET_CURRENT_PAGE",
     str
+  };
+}
+
+export function setFeaturedImage(x) {
+  console.log("now set image to", x)
+  return {
+    type: "SET_FEATURED_IMAGE",
+    x
   };
 }
 

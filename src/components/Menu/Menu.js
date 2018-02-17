@@ -21,6 +21,7 @@ class Menu extends Component {
     position: fixed;
     margin: 0;
     height: 50px;
+    z-index: 3;
     & > ul {
       display: flex;
       align-items: stretch;
@@ -44,7 +45,6 @@ class Menu extends Component {
     // --- todo ---
     // calculate width of 'COLLECTION' + apply same style to spring/summer?
     // could do this, + add a span to wrap/seperate elements so SS '18 could be right aligned?
-    
     let collectionTitle = this.props.currentPage === "collection" ? "X SPRING/SUMMER 2018" : "COLLECTION";
 
     return (

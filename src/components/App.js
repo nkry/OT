@@ -59,8 +59,11 @@ class Container extends Component {
     // all should be made global
     let singleMargin = 20;
     let pageMargin = singleMargin * 2;
+    let menuHeight = 50
     let sidebarWidth = 50;
     let minusContainer = sidebarWidth + pageMargin + "px";
+    let winHeight = window.innerHeight - menuHeight
+    let containerHeight = winHeight - singleMargin
 
     // main wrapper for content which sits in grid
     const AppWrapper = styled.div`
@@ -69,15 +72,16 @@ class Container extends Component {
       position: absolute;
       width: calc(100% - ${minusContainer});
       display: grid;
-      grid-template-rows: repeat(3, calc(33.3vh - 20px));
+      height: ${containerHeight + 'px'};
+      grid-template-rows: repeat(3, calc(33.3% - 20px));
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-gap: 0 10px;
     `;
 
     const Logo = styled.img`
-      z-index: 12;
+      z-index: 2;
       grid-column: span 1;
-      position: absolute;
+      position: fixed;
       top: 50%;
       transform: translateY(-50%);
       max-height: 100%;

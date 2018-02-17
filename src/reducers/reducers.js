@@ -2,7 +2,9 @@ import {
   SET_DEVICE_WIDTH,
   SET_CURRENT_PAGE,
   OPEN_SIDEBAR,
-  CLOSE_SIDEBAR
+  CLOSE_SIDEBAR,
+  UPDATE_LANDING,
+  SET_FEATURED_IMAGE
 } from "../actions/actions";
 
 export const rootReducer = (state = {}, action) => {
@@ -11,18 +13,19 @@ export const rootReducer = (state = {}, action) => {
       return Object.assign({}, state, {
         mobile: action.x <= 480 ? true : false
       });
-     case SET_CURRENT_PAGE:
-      return Object.assign({}, state, {
-        currentPage: action.str
-      });
+    case UPDATE_LANDING:
+    let max = 4
+    return Object.assign({}, state, {
+      landingLayout: state.landingLayout < max ? state.landingLayout += 1 : 0
+    });
+    case SET_CURRENT_PAGE:
+      return Object.assign({}, state, { currentPage: action.str });
+    case SET_FEATURED_IMAGE:
+      return Object.assign({}, state, { currentFeature: action.x });
     case OPEN_SIDEBAR:
-      return Object.assign({}, state, {
-        sidebarOpen: true
-      });
+      return Object.assign({}, state, { sidebarOpen: true });
     case CLOSE_SIDEBAR:
-      return Object.assign({}, state, {
-        sidebarOpen: false
-      });
+      return Object.assign({}, state, { sidebarOpen: false });
     default:
       return state;
   }

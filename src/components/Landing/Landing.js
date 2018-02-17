@@ -1,5 +1,18 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { PageWrapper } from "../../utils/Styles"
+import {
+  ImageOne,
+  ImageTwo,
+  ImageThree,
+  ImageFour,
+  ImageFive,
+  ImageSix,
+  ImageSeven,
+  ImageEight,
+  ImageNine,
+  ImageTen
+} from "../../utils/Images";
 
 class Landing extends Component {
   constructor(props) {
@@ -10,50 +23,30 @@ class Landing extends Component {
     this.props.action.setCurrentPage("/");
   }
 
-  // export styles for grid from dedicated styles module
-  // keep track of the current grid lockup in redux
-  // compare this prop (state) against an object which describes pairings of individual placements
-  // addeventlistener to a click on the wrapper which triggers this action
-  // also fade this wrapper back in
+  handleLandingClick() {
+    this.props.action.updateLanding()
+  }
 
+  //  fade this wrapper back in
   render() {
-    // make pageWrapper global
-    const PageWrapper = styled.div`
-      position: absolute;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      grid-gap: 0 10px;
-      grid-template-rows: repeat(3, 33.3%);
-      grid-column-start: 1;
-      grid-column-end: 25;
-      grid-row-start: 1;
-      display: grid;
-      height: 100%;
-    `;
-
-    const ImageOne = styled.img`
-      margin-top: 10px;
-      grid-column-start: 2;
-      grid-column-end: 10;
-      width: 100%;
-    `;
-
-    const ImageTwo = styled.img`
-      grid-column-start: 17;
-      grid-column-end: 25;
-      grid-row-start: 3;
-      width: 100%;
-      justify-self: end;
-      align-self: end;
-    `;
-
+    // preload these components in 
     const images = process.env.PUBLIC_URL + "/assets/home/";
 
-    return (
-      <PageWrapper>
-        <ImageOne src={images + "1.JPG"} />
-        <ImageTwo src={images + "2.JPG"} />
-      </PageWrapper>
-    );
+    let currentLayout = this.props.landingLayout
+    let layouts = [
+      [<ImageOne src={images + "1.JPG"} />, <ImageTwo src={images + "2.JPG"} />], 
+      [<ImageThree src={images + "3.JPG"} />, <ImageFour src={images + "4.JPG"} />], 
+      [<ImageFive src={images + "5.JPG"} />, <ImageSix src={images + "6.JPG"} />],
+      [<ImageSeven src={images + "7.JPG"} />, <ImageEight src={images + "8.JPG"} />], 
+      [<ImageNine src={images + "9.JPG"} />, <ImageTen src={images + "10.JPG"} />]];
+    
+    let imgOne = layouts[currentLayout][0];
+    let imgTwo = layouts[currentLayout][1];
+
+    return <PageWrapper landingGrid={true} onClick={this.handleLandingClick.bind(this)}>
+        {imgOne}
+        {imgTwo}
+      </PageWrapper>;
   }
 }
 

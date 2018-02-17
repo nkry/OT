@@ -6,7 +6,8 @@ import Landing from "./Landing";
 const mapStateToProps = function(state, prop) {
   return {
     data: state.data,
-    mobile: state.mobile
+    mobile: state.mobile,
+    landingLayout: state.landingLayout
   };
 };
 
