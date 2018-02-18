@@ -15,9 +15,17 @@ class Sidebar extends Component {
       transition: left 1s ease-out;
       left: ${props => (self.props.sidebarOpen ? "45px" : "calc(100vw - 45px)")};`;
     this.sidebarText = styled.div`
+      position: absolute;
       color: white;
-      font-size: 1em;
-    `;
+      font-weight: lighter;
+      display: inline-block;
+      top: 50%;
+      transform: translateY(-50%) translateX(-50%) rotateZ(-90deg);
+      margin-left: -3px;
+      left: 25px;
+      &:hover {
+        cursor: pointer;
+      }`;
   }
 
   handleOpenClick() {
@@ -30,6 +38,19 @@ class Sidebar extends Component {
     }
   }
 
+  handleCloseClick() {
+    this.props.action.closeSidebar()
+  }
+
+  handleFeatureClick() {
+    // need to pass length (dynamic?) here
+    let length = 20
+    let nextImage = this.props.currentFeature + 1
+    let prevImage = this.props.currentFeature - 1
+    let indx = this.props.currentFeature < length ? nextImage : 1
+    this.props.action.setFeaturedImage(indx);
+  }
+
   render() {
     const self = this;
 
@@ -40,11 +61,24 @@ class Sidebar extends Component {
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
+      &:hover {
+        cursor: e-resize;
+      }
       `;
 
-
+    const CloseButton = styled.div`
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: white;
+      margin: 20px 20px 0 0;
+      &:hover {
+        cursor: pointer;
+      }
+      `;
 
     const base = process.env.PUBLIC_URL + "/assets/collection/";
+
     // static for now 
     const images = [
       base + "collection-1.jpg", 
@@ -75,9 +109,10 @@ class Sidebar extends Component {
     let featuredNum = "(" + " " + this.props.currentFeature + " " + ")"
 
     return (
-      <Sidebar onClick={this.handleOpenClick.bind(this)} >
-        <SidebarText>{featuredNum}</SidebarText>
-        <FeaturedImage src={images[this.props.currentFeature - 1]} />
+      <Sidebar >
+        <SidebarText onClick={this.handleOpenClick.bind(this)}>{featuredNum}</SidebarText>
+        <CloseButton onClick={this.handleCloseClick.bind(this)}>CLOSE</CloseButton>
+        <FeaturedImage onClick={this.handleFeatureClick.bind(this)} src={images[this.props.currentFeature - 1]} />
       </Sidebar>
     );
   }

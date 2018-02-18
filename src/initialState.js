@@ -4,7 +4,9 @@ const initialState = {
   currentFeature: 1,
   landingLayout: 0,
   sidebarOpen: false,
-  currentPage: '/'
+  currentPage: "/",
+  stockistsOffset: false,
+  contactOffset: false
 };
 
 export default initialState;

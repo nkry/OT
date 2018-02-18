@@ -7,7 +7,6 @@ import SidebarContainer from "./Sidebar/SidebarContainer";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-
 const mapStateToProps = function(state, prop) {
   return {
     data: state.data,

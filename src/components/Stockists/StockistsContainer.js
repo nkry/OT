@@ -6,7 +6,8 @@ import Stockists from "./Stockists";
 const mapStateToProps = function(state, prop) {
   return {
     data: state.data,
-    mobile: state.mobile
+    mobile: state.mobile,
+    stockistsOffset: state.stockistsOffset
   };
 };
 

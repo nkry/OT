@@ -28,8 +28,8 @@ class Collection extends Component {
       grid-column-start: ${props => props.start};
       grid-column-end: ${props => props.end};
       width: 100%;
-      & > hover {
-        cursor: 'pointer';
+      &:hover {
+        cursor: pointer;
       }
     `;
 

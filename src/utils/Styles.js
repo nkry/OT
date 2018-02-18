@@ -10,6 +10,7 @@ const fadeIn = keyframes`
   }
 `;
 
+// fade animation makes /collections grid flash when sidebar is open?
 export const PageWrapper = styled.div`
   position: absolute;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

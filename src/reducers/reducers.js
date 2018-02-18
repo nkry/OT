@@ -4,7 +4,9 @@ import {
   OPEN_SIDEBAR,
   CLOSE_SIDEBAR,
   UPDATE_LANDING,
-  SET_FEATURED_IMAGE
+  SET_FEATURED_IMAGE,
+  SET_STOCKISTS_DIST,
+  SET_CONTACT_DIST
 } from "../actions/actions";
 
 export const rootReducer = (state = {}, action) => {
@@ -22,6 +24,10 @@ export const rootReducer = (state = {}, action) => {
       return Object.assign({}, state, { currentPage: action.str });
     case SET_FEATURED_IMAGE:
       return Object.assign({}, state, { currentFeature: action.x });
+    case SET_STOCKISTS_DIST:
+      return Object.assign({}, state, { stockistsOffset: action.x });
+    case SET_CONTACT_DIST:
+      return Object.assign({}, state, { contactOffset: action.x });
     case OPEN_SIDEBAR:
       return Object.assign({}, state, { sidebarOpen: true });
     case CLOSE_SIDEBAR:

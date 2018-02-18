@@ -1,8 +1,9 @@
 # OT FE
 
-- Work out grid/wrapper (main + sub) for all pages with inline-styles and css grid (accounting for sidebar etc.)
-- Redux state 
-- Push to git
+- Next/prev image on click position logic in sidebar
+- Loading/preloading of image
+- CSSGrid breaks in safari; need to use v10 + above? (update OS)
+- Mobile
 - Plug in backend when frontend is ready
 
 

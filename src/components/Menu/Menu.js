@@ -14,6 +14,23 @@ class Menu extends Component {
      }
   }
 
+  componentDidMount() {
+    const self = this
+    let stockistsLink = this.refs.stockistsLink
+    let offset = stockistsLink.offsetLeft
+    this.props.action.setStockistsDist(offset);
+
+    let ww = window.innerWidth;
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        let newOffset = stockistsLink.offsetLeft;
+        self.props.action.setStockistsDist(newOffset);
+      }, 250);
+    });
+  }
+
   render() {
   const MenuWrapper = styled.div`
     left: 20px;
@@ -41,18 +58,17 @@ class Menu extends Component {
       }
     }`;
 
-
     // --- todo ---
     // calculate width of 'COLLECTION' + apply same style to spring/summer?
     // could do this, + add a span to wrap/seperate elements so SS '18 could be right aligned?
-    let collectionTitle = this.props.currentPage === "collection" ? "X SPRING/SUMMER 2018" : "COLLECTION";
+    let collectionTitle = this.props.currentPage === "collection" ? "X" : "COLLECTION";
 
     return (
       <MenuWrapper>
         <ul>
           <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{collectionTitle}</Link></li>
-          <li onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
-          <li onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
+          <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
+          <li id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
           <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
         </ul>
       </MenuWrapper>
