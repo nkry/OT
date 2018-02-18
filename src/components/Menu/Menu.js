@@ -17,16 +17,22 @@ class Menu extends Component {
   componentDidMount() {
     const self = this
     let stockistsLink = this.refs.stockistsLink
-    let offset = stockistsLink.offsetLeft
-    this.props.action.setStockistsDist(offset);
+    let stockistOffset = stockistsLink.offsetLeft
+    let contactLink = this.refs.contactLink;
+    let contactOffset = contactLink.offsetLeft;
+
+    this.props.action.setStockistsDist(stockistOffset);
+    this.props.action.setContactDist(contactOffset);
 
     let ww = window.innerWidth;
     let resizeTimer;
     window.addEventListener("resize", () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        let newOffset = stockistsLink.offsetLeft;
-        self.props.action.setStockistsDist(newOffset);
+        let newStockistsOffset = stockistsLink.offsetLeft;
+        let newContactOffset = contactLink.offsetLeft;
+        self.props.action.setStockistsDist(newStockistsOffset);
+        self.props.action.setStockistsDist(newContactOffset);
       }, 250);
     });
   }
@@ -68,7 +74,7 @@ class Menu extends Component {
         <ul>
           <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{collectionTitle}</Link></li>
           <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
-          <li id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
+          <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
           <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
         </ul>
       </MenuWrapper>

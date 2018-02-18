@@ -6,7 +6,8 @@ import Contact from "./Contact";
 const mapStateToProps = function(state, prop) {
   return {
     data: state.data,
-    mobile: state.mobile
+    mobile: state.mobile,
+    contactOffset: state.contactOffset
   };
 };
 
