@@ -28,11 +28,12 @@ class Menu extends Component {
     let resizeTimer;
     window.addEventListener("resize", () => {
       clearTimeout(resizeTimer);
+      // this doesn't work everytime?
       resizeTimer = setTimeout(() => {
         let newStockistsOffset = stockistsLink.offsetLeft;
         let newContactOffset = contactLink.offsetLeft;
         self.props.action.setStockistsDist(newStockistsOffset);
-        self.props.action.setStockistsDist(newContactOffset);
+        self.props.action.setContactDist(newContactOffset);
       }, 250);
     });
   }

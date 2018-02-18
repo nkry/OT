@@ -14,9 +14,14 @@ class Stockists extends Component {
       )
     }
     else {
+      
+      // need to unify/globalize these variables/numbers
+      let containerWith = (window.innerWidth - 50) - 15
+      let stockistsWidth = containerWith - this.props.stockistsOffset
+
       const StockistsWrapper = styled.div`
         top: 0;
-        width: 50vw;
+        width: ${stockistsWidth + 'px'};
         position: absolute;
         left: ${this.props.stockistsOffset + 'px'};
        `;

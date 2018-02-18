@@ -18,20 +18,24 @@ class Contact extends Component {
       )
     }
     else {
+      // 15 is by eye 
+      // need to unify/globalize these variables/numbers
+      let containerWith = (window.innerWidth - 50) - 15
+      let contactWidth = containerWith - this.props.contactOffset
+
       const ContactWrapper = styled.div`
         top: 0;
-        width: 50vw;
+        background: red;
+        width: ${contactWidth + "px"};
         position: absolute;
         left: ${this.props.contactOffset + "px"};`;
-      return (
-       <PageWrapper landingGrid={false}>
-        <ContactWrapper>
-          <div>CONTACT</div>
-          <div>CONTACT</div>
-          <div>CONTACT</div>
-        </ContactWrapper>
-       </PageWrapper>
-      )
+      return <PageWrapper landingGrid={false}>
+          <ContactWrapper>
+            <div>CONTACT CONTACT</div>
+            <div>CONTACT</div>
+            <div>CONTACT</div>
+          </ContactWrapper>
+        </PageWrapper>;
     }
   }
 }
