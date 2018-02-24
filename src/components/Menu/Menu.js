@@ -30,8 +30,10 @@ class Menu extends Component {
       clearTimeout(resizeTimer);
       // this doesn't work everytime?
       resizeTimer = setTimeout(() => {
-        let newStockistsOffset = stockistsLink.offsetLeft;
-        let newContactOffset = contactLink.offsetLeft;
+        let newStockistsLink = this.refs.stockistsLink;
+        let newStockistsOffset = newStockistsLink.offsetLeft;
+        let newContactLink = this.refs.contactLink;
+        let newContactOffset = newContactLink.offsetLeft;
         self.props.action.setStockistsDist(newStockistsOffset);
         self.props.action.setContactDist(newContactOffset);
       }, 250);

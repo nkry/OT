@@ -9,7 +9,7 @@ class Sidebar extends Component {
     this.sidebar = styled.div`
       width: calc(100vw - 45px);
       height: 100vh;
-      background: #0b017a;
+      background: #FFF;
       position: fixed;
       z-index: 11;
       transition: left 1s ease-out;
@@ -23,6 +23,16 @@ class Sidebar extends Component {
       transform: translateY(-50%) translateX(-50%) rotateZ(-90deg);
       margin-left: -3px;
       left: 25px;
+      height: 45px;
+      width: 100%;
+      text-align: center;
+      background: red;
+      background: #0b017a;
+      & span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
       &:hover {
         cursor: pointer;
       }`;
@@ -70,7 +80,7 @@ class Sidebar extends Component {
       position: absolute;
       top: 0;
       right: 0;
-      color: white;
+      color: #000;
       margin: 20px 20px 0 0;
       &:hover {
         cursor: pointer;
@@ -110,7 +120,7 @@ class Sidebar extends Component {
 
     return (
       <Sidebar >
-        <SidebarText onClick={this.handleOpenClick.bind(this)}>{featuredNum}</SidebarText>
+        <SidebarText onClick={this.handleOpenClick.bind(this)}><span>{featuredNum}</span></SidebarText>
         <CloseButton onClick={this.handleCloseClick.bind(this)}>CLOSE</CloseButton>
         <FeaturedImage onClick={this.handleFeatureClick.bind(this)} src={images[this.props.currentFeature - 1]} />
       </Sidebar>

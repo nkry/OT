@@ -77,15 +77,31 @@ class Container extends Component {
       grid-gap: 0 10px;
     `;
 
+    // max-height: 100%;
+    // grid-column: span 0;
+    // need to add breakpoints for fixed px width
     const Logo = styled.img`
       z-index: 2;
-      grid-column: span 1;
+      width: 8px;
       position: fixed;
+      max-height: 80%;
       top: 50%;
       transform: translateY(-50%);
-      max-height: 100%;
     `;
 
+    // // --- w.i.p ---
+    // const GradientWrapper = styled.div`
+    //   z-index: 2;
+    //   left: 20px;
+    //   width: calc(100% - 90px);
+    //   background: white;
+    //   height: 90px;
+    //   position: fixed;
+    //   top: 0;
+    //   background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    //   `;
+
+    // render gradientWrapper conditionally based on location
     return (
       <div className="app--wrapper">
         <MenuContainer location={this.props.location} />

@@ -46,6 +46,7 @@
     "react-css-transition": "^0.7.4",
     "react-dev-utils": "^0.3.0",
     "react-dom": "^15.3.2",
+    "react-drive-in": "^1.7.3",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.2.1",

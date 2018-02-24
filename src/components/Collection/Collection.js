@@ -137,6 +137,18 @@ class Collection extends Component {
       }
     ];
 
+        // --- w.i.p ---
+    const GradientWrapper = styled.div`
+      z-index: 2;
+      left: 20px;
+      width: calc(100% - 90px);
+      background: white;
+      height: 80px;
+      position: fixed;
+      top: 0;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+      `;
+
     // store individal cell/img styles in array here?
     const self = this;
 
@@ -154,7 +166,12 @@ class Collection extends Component {
     });
 
     // need to add bottom margin/padding
-    return <PageWrapper landingGrid={false}>{images}</PageWrapper>;
+    return (
+      <PageWrapper landingGrid={false}>
+        <GradientWrapper/>
+        {images}
+      </PageWrapper>
+    );
   }
 }
 

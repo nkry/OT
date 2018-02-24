@@ -5,6 +5,7 @@ export const ImageOne = styled.img`
   grid-column-start: 3;
   grid-column-end: 11;
   width: 100%;
+  user-select: none;
 `;
 
 export const ImageTwo = styled.img`
@@ -14,6 +15,7 @@ export const ImageTwo = styled.img`
   width: 100%;
   justify-self: center;
   align-self: center;
+  user-select: none;
 `;
 
 export const ImageThree = styled.img`
@@ -23,6 +25,7 @@ export const ImageThree = styled.img`
   width: 100%;
   justify-self: center;
   align-self: center;
+  user-select: none;
 `;
 
 export const ImageFour = styled.img`
@@ -30,6 +33,7 @@ export const ImageFour = styled.img`
   grid-column-end: 20;
   grid-row-start: 1;
   width: 100%;
+  user-select: none;
 `;
 
 export const ImageFive = styled.img`
@@ -37,6 +41,7 @@ export const ImageFive = styled.img`
   grid-column-end: 13;
   grid-row-start: 1;
   width: 100%;
+  user-select: none;
 `;
 
 export const ImageSix = styled.img`
@@ -46,6 +51,7 @@ export const ImageSix = styled.img`
   width: 100%;
   justify-self: end;
   align-self: end;
+  user-select: none;
 `;
 
 export const ImageSeven = styled.img`
@@ -55,6 +61,7 @@ export const ImageSeven = styled.img`
   width: 100%;
   justify-self: end;
   align-self: end;
+  user-select: none;
 `;
 
 export const ImageEight = styled.img`
@@ -64,6 +71,7 @@ export const ImageEight = styled.img`
   width: 100%;
   justify-self: end;
   align-self: end;
+  user-select: none;
 `;
 
 export const ImageNine = styled.img`
@@ -71,6 +79,7 @@ export const ImageNine = styled.img`
   grid-column-end: 25;
   grid-row-start: 1;
   width: 100%;
+  user-select: none;
 `;
 
 export const ImageTen = styled.img`
@@ -80,6 +89,7 @@ export const ImageTen = styled.img`
   width: 100%;
   justify-self: end;
   align-self: end;
+  user-select: none;
 `;
 
 

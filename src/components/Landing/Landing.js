@@ -34,11 +34,11 @@ class Landing extends Component {
 
     let currentLayout = this.props.landingLayout
     let layouts = [
-      [<ImageOne src={images + "1.JPG"} />, <ImageTwo src={images + "2.JPG"} />], 
-      [<ImageThree src={images + "3.JPG"} />, <ImageFour src={images + "4.JPG"} />], 
-      [<ImageFive src={images + "5.JPG"} />, <ImageSix src={images + "6.JPG"} />],
-      [<ImageSeven src={images + "7.JPG"} />, <ImageEight src={images + "8.JPG"} />], 
-      [<ImageNine src={images + "9.JPG"} />, <ImageTen src={images + "10.JPG"} />]];
+      [<ImageOne src={images + "1.jpg"} />, <ImageTwo src={images + "2.jpg"} />], 
+      [<ImageThree src={images + "3.jpg"} />, <ImageFour src={images + "4.jpg"} />], 
+      [<ImageFive src={images + "5.jpg"} />, <ImageSix src={images + "6.jpg"} />],
+      [<ImageSeven src={images + "7.jpg"} />, <ImageEight src={images + "8.jpg"} />], 
+      [<ImageNine src={images + "9.jpg"} />, <ImageTen src={images + "10.jpg"} />]];
     
     let imgOne = layouts[currentLayout][0];
     let imgTwo = layouts[currentLayout][1];
