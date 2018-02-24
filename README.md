@@ -1,8 +1,8 @@
 # OT FE
 
 - Loading/preloading of images
-- Updated image grid for collections (waiting on feedback)
 - Next/prev image on click position logic in sidebar (also add keypad events)
+- Updated image grid for collections (waiting on feedback)
 - CSSGrid breaks in safari; need to use v10 + above? (update OS)
 - Custom cursors?
 - Mobile, tablet + large screen styles
