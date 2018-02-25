@@ -45,6 +45,7 @@
     "promise": "7.1.1",
     "react": "^15.3.2",
     "react-css-transition": "^0.7.4",
+    "react-cursor-position": "^2.4.0",
     "react-dev-utils": "^0.3.0",
     "react-dom": "^15.3.2",
     "react-drive-in": "^1.7.3",

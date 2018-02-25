@@ -13,6 +13,7 @@ import {
   ImageNine,
   ImageTen
 } from "../../utils/Images";
+import LandingImage from './LandingImage'
 
 class Landing extends Component {
   constructor(props) {
