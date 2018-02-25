@@ -9,11 +9,13 @@ class Sidebar extends Component {
     this.sidebar = styled.div`
       width: calc(100vw - 45px);
       height: 100vh;
-      background: #FFF;
+      background: #fff;
       position: fixed;
       z-index: 11;
       transition: left 1s ease-out;
-      left: ${props => (self.props.sidebarOpen ? "45px" : "calc(100vw - 45px)")};`;
+      left: ${props =>
+        self.props.sidebarOpen ? "45px" : "calc(100vw - 45px)"};
+    `;
     this.sidebarText = styled.div`
       position: absolute;
       color: white;
@@ -35,30 +37,59 @@ class Sidebar extends Component {
       }
       &:hover {
         cursor: pointer;
-      }`;
+      }
+    `;
+  }
+
+  componentDidMount() {
+     window.addEventListener("keydown", (event) => {
+      if (event.keyCode == 27 && this.props.sidebarOpen) {
+        this.props.action.closeSidebar()
+      }
+      else if (event.keyCode == 37 && this.props.sidebarOpen || event.keyCode == 39 && this.props.sidebarOpen) {
+        // length needs to be dynamic; .length of files in arr
+        let length = 20;
+        let nextImage = this.props.currentFeature < length ? this.props.currentFeature + 1 : 1;
+        let prevImage = this.props.currentFeature > 1 ? this.props.currentFeature - 1 : length;
+        this.props.action.setFeaturedImage(prevImage);
+        event.keyCode == 37 ? this.props.action.setFeaturedImage(prevImage) : this.props.action.setFeaturedImage(nextImage);
+      }
+     });
   }
 
   handleOpenClick() {
-    // temp 
-    if (!this.props.sidebarOpen) {
-      this.props.action.openSidebar()
+    let pathname = this.props.location.pathname 
+    if (pathname === '/content') {
+      return false
     }
     else {
-      this.props.action.closeSidebar()
+      if (!this.props.sidebarOpen) {
+        this.props.action.openSidebar();
+      } else {
+        this.props.action.closeSidebar();
+      }
     }
   }
 
   handleCloseClick() {
-    this.props.action.closeSidebar()
+    this.props.action.closeSidebar();
   }
 
-  handleFeatureClick() {
-    // need to pass length (dynamic?) here
-    let length = 20
-    let nextImage = this.props.currentFeature + 1
-    let prevImage = this.props.currentFeature - 1
-    let indx = this.props.currentFeature < length ? nextImage : 1
-    this.props.action.setFeaturedImage(indx);
+  handleFeatureClick(event) {
+    let ww = window.innerWidth;
+    let clickBounds = ww / 2;
+    // length needs to be dynamic; .length of files in arr
+    let length = 20;
+    let nextImage =
+      this.props.currentFeature < length ? this.props.currentFeature + 1 : 1;
+    let prevImage =
+      this.props.currentFeature > 1 ? this.props.currentFeature - 1 : length;
+    let x = event.pageX;
+    if (x <= clickBounds) {
+      this.props.action.setFeaturedImage(prevImage);
+    } else {
+      this.props.action.setFeaturedImage(nextImage);
+    }
   }
 
   render() {
@@ -72,9 +103,9 @@ class Sidebar extends Component {
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
       &:hover {
-        cursor: e-resize;
+        cursor: pointer;
       }
-      `;
+    `;
 
     const CloseButton = styled.div`
       position: absolute;
@@ -85,13 +116,13 @@ class Sidebar extends Component {
       &:hover {
         cursor: pointer;
       }
-      `;
+    `;
 
     const base = process.env.PUBLIC_URL + "/assets/collection/";
 
-    // static for now 
+    // static for now
     const images = [
-      base + "collection-1.jpg", 
+      base + "collection-1.jpg",
       base + "collection-2.jpg",
       base + "collection-3.jpg",
       base + "collection-4.jpg",
@@ -110,19 +141,26 @@ class Sidebar extends Component {
       base + "collection-17.jpg",
       base + "collection-18.jpg",
       base + "collection-19.jpg",
-      base + "collection-20.jpg",
+      base + "collection-20.jpg"
     ];
 
     // to apply transitions, styles must be outside of render method
     const Sidebar = this.sidebar;
     const SidebarText = this.sidebarText;
-    let featuredNum = "(" + " " + this.props.currentFeature + " " + ")"
+    let featuredNum = "(" + " " + this.props.currentFeature + " " + ")";
 
     return (
-      <Sidebar >
-        <SidebarText onClick={this.handleOpenClick.bind(this)}><span>{featuredNum}</span></SidebarText>
-        <CloseButton onClick={this.handleCloseClick.bind(this)}>CLOSE</CloseButton>
-        <FeaturedImage onClick={this.handleFeatureClick.bind(this)} src={images[this.props.currentFeature - 1]} />
+      <Sidebar>
+        <SidebarText onClick={this.handleOpenClick.bind(this)}>
+          <span>{featuredNum}</span>
+        </SidebarText>
+        <CloseButton onClick={this.handleCloseClick.bind(this)}>
+          CLOSE
+        </CloseButton>
+        <FeaturedImage
+          onClick={this.handleFeatureClick.bind(this)}
+          src={images[this.props.currentFeature - 1]}
+        />
       </Sidebar>
     );
   }

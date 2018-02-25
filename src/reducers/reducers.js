@@ -5,6 +5,7 @@ import {
   CLOSE_SIDEBAR,
   UPDATE_LANDING,
   SET_FEATURED_IMAGE,
+  IMAGES_CACHED,
   SET_STOCKISTS_DIST,
   SET_CONTACT_DIST
 } from "../actions/actions";

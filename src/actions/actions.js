@@ -13,6 +13,7 @@ export const UPDATE_LANDING = "UPDATE_LANDING";
 export const SET_FEATURED_IMAGE = "SET_FEATURED_IMAGE";
 export const SET_STOCKISTS_DIST = "SET_STOCKISTS_DIST";
 export const SET_CONTACT_DIST = "SET_CONTACT_DIST";
+export const IMAGES_CACHED = "IMAGES_CACHED";
 
 export function checkDeviceWidth(x) {
   return {
@@ -35,7 +36,6 @@ export function setCurrentPage(str) {
 }
 
 export function setFeaturedImage(x) {
-  console.log("now set image to", x)
   return {
     type: "SET_FEATURED_IMAGE",
     x
