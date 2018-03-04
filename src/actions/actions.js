@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base =
+const endpoint =
   process.env.NODE_ENV === "production"
     ? "http://dev.oveliatranstoto.nkry.info/cms/api/home"
     : "http://localhost:9000/api/home";
@@ -14,6 +14,9 @@ export const SET_FEATURED_IMAGE = "SET_FEATURED_IMAGE";
 export const SET_STOCKISTS_DIST = "SET_STOCKISTS_DIST";
 export const SET_CONTACT_DIST = "SET_CONTACT_DIST";
 export const IMAGES_CACHED = "IMAGES_CACHED";
+export const REQUEST = "REQUEST";
+export const RESPONSE = "RESPONSE";
+export const PAYLOAD = "PAYLOAD";
 
 export function checkDeviceWidth(x) {
   return {
@@ -70,27 +73,36 @@ export function closeSidebar() {
 }
 
 
-// export function passRootData(data) {
-//   return {
-//     type: "PASS_ROOT_DATA",
-//     data
-//   };
-// }
+export function requestData() {
+  return {
+    type: "REQUEST"
+  };
+}
 
-// export function getPageData(slug) {
-//   return function(dispatch) {
-//     // console.log("make page request")
-//     return axios.get(`${base + "/index/" + slug}`).then(response => {
-//       dispatch(passProjectData(response));
-//     });
-//   };
-// }
+export function receiveData() {
+  return {
+    type: "RESPONSE"
+  };
+}
 
-// export function getData(slug) {
-//   return function(dispatch) {
-//     // console.log("make root request")
-//     return axios.get(base).then(response => {
-//       dispatch(passRootData(response));
-//     });
-//   };
-// }
+export function passData(data) {
+  return {
+    type: "PAYLOAD",
+    data
+  };
+}
+
+export function getData() {
+  return function(dispatch) {
+    dispatch(requestData());
+    return axios
+      .get(endpoint)
+      .then(response => {
+        console.log("data", response);
+        dispatch(passData(response));
+      })
+      .then(response => {
+        dispatch(receiveData());
+      });
+  };
+}

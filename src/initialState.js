@@ -1,4 +1,5 @@
 const initialState = {
+  loaded: false,
   data: [],
   mobile: false,
   currentFeature: 1,

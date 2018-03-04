@@ -29,40 +29,42 @@ class Stockists extends Component {
           text-decoration: none;
         }
        `;
-
+      
+      // could get rid of this
       const StockistsTitle = styled.div`
         text-transform: uppercase;
         `;
       
+      // render with <Markup/>
       return (
         <PageWrapper landingGrid={false}>
           <StockistsWrapper>
-            <StockistsTitle>UNITED KINGDOM</StockistsTitle>
+            <div>UNITED KINGDOM</div>
             <div><a href="http://london.doverstreetmarket.com/" target="_blank">Dover Street Market London</a></div>
             <div><a href="http://www.machine-a.com/" target="_blank">Machine-A</a></div>
             <br/>
-            <StockistsTitle>USA</StockistsTitle>
+            <div>USA</div>
             <div><a href="https://www.communitie.net/" target="_blank">Communitie</a></div>
             <div><a href="http://newyork.doverstreetmarket.com/" target="_blank">Dover Street Market New York</a></div>
             <div><a href="https://www.hlorenzo.com/" target="_blank">H-Lorenzo</a></div>
             <div><a href="https://lindadresner.com/" target="_blank">Linda Dresner</a></div>
             <div><a href="https://mnzstore.com/" target="_blank">Maryam Nassir Zadeh</a></div>
             <br/>
-            <StockistsTitle>Japan</StockistsTitle>
+            <div>JAPAN</div>
             <div><a href="http://ginza.doverstreetmarket.com/" target="_blank">Dover Street Market Ginza</a></div>
             <div><a href="http://isetan.mistore.jp/store" target="_blank">Isetan</a></div>
             <br/>
-            <StockistsTitle>Singapore</StockistsTitle>
+            <div>SINGAPORE</div>
             <div><a href="http://singapore.doverstreetmarket.com/" target="_blank">Dover Street Market Singapore</a></div>
             <br/>
-            <StockistsTitle>Korea</StockistsTitle>
+            <div>KOREA</div>
             <div><a href="http://www.boontheshop.com/" target="_blank">Boon the Shop</a></div>
             <br/>
-            <StockistsTitle>Hong Kong</StockistsTitle>
+            <div>HONG KONG</div>
             <div><a href="http://www.joyce.com/" target="_blank">Joyce</a></div>
             <div><a href="http://www.shinegroup.com.hk/en" target="_blank">Shine</a></div>
             <br/>
-            <StockistsTitle>Online</StockistsTitle>
+            <div>ONLINE</div>
             <div><a href="https://www.ssense.com/" target="_blank">SSENSE</a></div>
           </StockistsWrapper>
         </PageWrapper>

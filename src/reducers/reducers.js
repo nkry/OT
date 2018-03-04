@@ -7,11 +7,22 @@ import {
   SET_FEATURED_IMAGE,
   IMAGES_CACHED,
   SET_STOCKISTS_DIST,
-  SET_CONTACT_DIST
+  SET_CONTACT_DIST,
+  REQUEST,
+  RESPONSE,
+  PAYLOAD
 } from "../actions/actions";
 
 export const rootReducer = (state = {}, action) => {
   switch (action.type) {
+    case RESPONSE:
+			return Object.assign({}, state, {
+				loaded: true
+			})
+		case PAYLOAD:
+			return Object.assign({}, state, {
+				data: action.data
+			})
     case SET_DEVICE_WIDTH:
       return Object.assign({}, state, {
         mobile: action.x <= 480 ? true : false

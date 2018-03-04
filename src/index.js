@@ -22,6 +22,7 @@ const StoreInstance = Store();
 StoreInstance.dispatch(actions.checkDeviceWidth(window.innerWidth));
 
 // make initial dispatch 
+StoreInstance.dispatch(actions.getData());
 
 // set up routes
 const Routes = () => {

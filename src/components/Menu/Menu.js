@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { MenuWrapperOne } from "../../utils/Styles";
+import { MenuWrapperTwo } from "../../utils/Styles";
 
 class Menu extends Component {
   constructor(props) {
@@ -28,7 +30,6 @@ class Menu extends Component {
     let resizeTimer;
     window.addEventListener("resize", () => {
       clearTimeout(resizeTimer);
-      // this doesn't work everytime?
       resizeTimer = setTimeout(() => {
         let newStockistsLink = this.refs.stockistsLink;
         let newStockistsOffset = newStockistsLink.offsetLeft;
@@ -41,47 +42,41 @@ class Menu extends Component {
   }
 
   render() {
-  const MenuWrapper = styled.div`
-    left: 20px;
-    width: calc(100% - 90px);
-    position: fixed;
-    margin: 0;
-    height: 50px;
-    z-index: 3;
-    & > ul {
-      display: flex;
-      align-items: stretch;
-      justify-content: space-between;
-      padding: 0;
-      & > li {
-        margin: 0;
-        padding: 0;
-        flex: 0 1;
-        display: inline;
-        white-space: nowrap;
-        list-style: none;
-        & a {
-          color: black;
-          text-decoration: none;
-        }
+    
+    // title itself will be dynamic  
+    let collectionTitle = <div>SPRING SUMMER <span id="negative--kern">’18</span></div>;
+    // check entries/children for collection
+    let multipleCollections = false
+    // need to check string in title + check if letter 'X' is first 
+    let titleContainsX = true
+
+    if (!multipleCollections) {
+      if (titleContainsX) {
+        return (
+          <MenuWrapperOne>
+            <li onClick={this.handleMenuClick.bind(this, 'collection')} className="collections--close"><Link to="/collection">X</Link></li>
+            <ul>
+              <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{collectionTitle}</Link></li>
+              <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
+              <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
+              <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
+            </ul>
+          </MenuWrapperOne>
+        )
       }
-    }`;
-
-    // --- todo ---
-    // calculate width of 'COLLECTION' + apply same style to spring/summer?
-    // could do this, + add a span to wrap/seperate elements so SS '18 could be right aligned?
-    let collectionTitle = this.props.currentPage === "collection" ? "X" : "COLLECTION";
-
-    return (
-      <MenuWrapper>
-        <ul>
-          <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{collectionTitle}</Link></li>
-          <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
-          <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
-          <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
-        </ul>
-      </MenuWrapper>
-    )
+    }
+    else {
+      return (
+        <MenuWrapperTwo>
+          <ul>
+            <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">COLLECTIONS</Link></li>
+            <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
+            <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
+            <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
+          </ul>
+        </MenuWrapperTwo>
+      )
+    }
   }
 }
 

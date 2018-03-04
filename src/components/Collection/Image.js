@@ -33,6 +33,7 @@ class Image extends Component {
   render() {
     return (
       <ImageCell
+        id={this.props.id}
         start={this.props.start}
         end={this.props.end}
         row={this.props.row}

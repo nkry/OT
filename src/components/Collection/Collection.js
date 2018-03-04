@@ -142,7 +142,8 @@ class Collection extends Component {
     const self = this
     let images = self.collection.map((x, key) => {
       return (
-        <Image 
+        <Image
+          id={key}
           start={x.start} 
           end={x.end} 
           row={x.row} 

@@ -6,6 +6,8 @@ export const ImageOne = styled.img`
   grid-column-end: 11;
   width: 100%;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 export const ImageTwo = styled.img`
@@ -16,6 +18,8 @@ export const ImageTwo = styled.img`
   justify-self: center;
   align-self: center;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 export const ImageThree = styled.img`
@@ -26,6 +30,8 @@ export const ImageThree = styled.img`
   justify-self: center;
   align-self: center;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 export const ImageFour = styled.img`
@@ -34,6 +40,8 @@ export const ImageFour = styled.img`
   grid-row-start: 1;
   width: 100%;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 export const ImageFive = styled.img`
@@ -42,6 +50,8 @@ export const ImageFive = styled.img`
   grid-row-start: 1;
   width: 100%;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 export const ImageSix = styled.img`
@@ -52,6 +62,8 @@ export const ImageSix = styled.img`
   justify-self: end;
   align-self: end;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 export const ImageSeven = styled.img`
@@ -62,6 +74,8 @@ export const ImageSeven = styled.img`
   justify-self: end;
   align-self: end;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 export const ImageEight = styled.img`
@@ -72,6 +86,8 @@ export const ImageEight = styled.img`
   justify-self: end;
   align-self: end;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 export const ImageNine = styled.img`
@@ -80,6 +96,8 @@ export const ImageNine = styled.img`
   grid-row-start: 1;
   width: 100%;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 export const ImageTen = styled.img`
@@ -90,6 +108,8 @@ export const ImageTen = styled.img`
   justify-self: end;
   align-self: end;
   user-select: none;
+  opacity: ${props => props.loaded ? 1 : 0};
+  transition: opacity .15s linear;
 `;
 
 
