@@ -3,6 +3,7 @@ import {
   SET_CURRENT_PAGE,
   OPEN_SIDEBAR,
   CLOSE_SIDEBAR,
+  SET_MAX_LANDING_IMAGES,
   UPDATE_LANDING,
   SET_FEATURED_IMAGE,
   IMAGES_CACHED,
@@ -27,10 +28,13 @@ export const rootReducer = (state = {}, action) => {
       return Object.assign({}, state, {
         mobile: action.x <= 480 ? true : false
       });
-    case UPDATE_LANDING:
-    let max = 4
+    case SET_MAX_LANDING_IMAGES:
     return Object.assign({}, state, {
-      landingLayout: state.landingLayout < max ? state.landingLayout += 1 : 0
+      maxLandingImages: action.x
+    });
+    case UPDATE_LANDING:
+    return Object.assign({}, state, {
+      landingLayout: state.landingLayout < state.maxLandingImages - 1 ? state.landingLayout += 1 : 0
     });
     case SET_CURRENT_PAGE:
       return Object.assign({}, state, { currentPage: action.str });

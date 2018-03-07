@@ -9,6 +9,7 @@ export const SET_DEVICE_WIDTH = "SET_DEVICE_WIDTH";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const OPEN_SIDEBAR = "OPEN_SIDEBAR";
 export const CLOSE_SIDEBAR = "CLOSE_SIDEBAR";
+export const SET_MAX_LANDING_IMAGES = "SET_MAX_LANDING_IMAGES";
 export const UPDATE_LANDING = "UPDATE_LANDING";
 export const SET_FEATURED_IMAGE = "SET_FEATURED_IMAGE";
 export const SET_STOCKISTS_DIST = "SET_STOCKISTS_DIST";
@@ -23,6 +24,13 @@ export function checkDeviceWidth(x) {
     type: "SET_DEVICE_WIDTH",
     x
   };
+}
+
+export function setMaxLanding(x) {
+  return {
+    type: "SET_MAX_LANDING_IMAGES",
+    x
+  }
 }
 
 export function updateLanding() {

@@ -10,46 +10,46 @@ class Landing extends Component {
 
   componentDidMount() {
     this.props.action.setCurrentPage("/");
+    let images = this.props.data.data.images.originals;
+    let max = images.length / 2
+    this.props.action.setMaxLanding(max);
   }
 
   handleLandingClick() {
     this.props.action.updateLanding()
   }
 
-  render() {
-
-    if (this.props.data.length === 0) {
-      console.log("return false")
-      return (
-        <div>LOADER</div>
-      )
+  walk(arr, n, fn) {
+    for (var i = 0; i < arr.length; i += n) {
+      fn(arr.slice(i, i + n));
     }
-    else {
-      // const images = process.env.PUBLIC_URL + "/assets/home/";
-      let currentLayout = this.props.landingLayout
-      // let layouts = [
-      //   [<LandingImage style={1} src={images + "1.jpg"} />, <LandingImage style={2} src={images + "2.jpg"} />],
-      //   [<LandingImage style={3} src={images + "3.jpg"} />, <LandingImage style={4} src={images + "4.jpg"} />],
-      //   [<LandingImage style={5} src={images + "5.jpg"} />, <LandingImage style={6} src={images + "6.jpg"} />],
-      //   [<LandingImage style={7} src={images + "7.jpg"} />, <LandingImage style={8} src={images + "8.jpg"} />],
-      //   [<LandingImage style={9} src={images + "9.jpg"} />, <LandingImage style={10} src={images + "10.jpg"} />],
-      // ];
+  }
 
-      let imgs = this.props.data.data.images.originals
-      let layouts = []
+  render() {
+    if (this.props.data.length === 0) {
+      return <div></div>;
+    } else {
+      let currentLayout = this.props.landingLayout;
+      let imgs = this.props.data.data.images.originals;
+      let layouts = [];
+      let pairs = []
 
-      // this isn't working because it needs to be split into 2s
-      // layouts is an array of arrays (2 components in each array)
-      // need to run through this and push to a new array every 2 items
-
+      let i = 0
       imgs.map((x, key) => {
-        if (key % 2 === 0) {
-          layouts.push(<LandingImage style={key + 1} src={x.url} />)
+        if (i >= 10) {
+          i = 0
         }
-      })
+        i += 1
+        let count = key + 1 >= 10 ? i : key + 1
+        layouts.push(<LandingImage style={count} src={x.url} />);
+      });
 
-      let imgOne = layouts[currentLayout][0];
-      let imgTwo = layouts[currentLayout][1];
+      this.walk(layouts, 2, function(segment) {
+        pairs.push(segment)
+      });
+
+      let imgOne = pairs[currentLayout][0];
+      let imgTwo = pairs[currentLayout][1];
 
       return <PageWrapper landingGrid={true} onClick={this.handleLandingClick.bind(this)}>
           {imgOne}
