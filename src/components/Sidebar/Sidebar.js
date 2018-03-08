@@ -5,7 +5,6 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     const self = this;
-    // --- make blue a global variable ---
     this.sidebar = styled.div`
       width: calc(100vw - 45px);
       height: 100vh;
@@ -47,10 +46,24 @@ class Sidebar extends Component {
         this.props.action.closeSidebar()
       }
       else if (event.keyCode == 37 && this.props.sidebarOpen || event.keyCode == 39 && this.props.sidebarOpen) {
-        // length needs to be dynamic; .length of files in arr
-        let length = 20;
-        let nextImage = this.props.currentFeature < length ? this.props.currentFeature + 1 : 1;
-        let prevImage = this.props.currentFeature > 1 ? this.props.currentFeature - 1 : length;
+        
+        let limit;
+        let collections = this.props.data.data.children[0];
+
+        if (this.props.numberOfCollections > 1) {
+          let allImages = [];
+          collections.posts.forEach(x => {
+            x.images.thumbnails.forEach(image => {
+              allImages.push(image);
+            });
+          });
+          limit = allImages.length;
+        } else {
+          let images = collections.posts[0].images.originals;
+          limit = images.length;
+        }
+        let nextImage = this.props.currentFeature < limit ? this.props.currentFeature + 1 : 1;
+        let prevImage = this.props.currentFeature > 1 ? this.props.currentFeature - 1 : limit;
         this.props.action.setFeaturedImage(prevImage);
         event.keyCode == 37 ? this.props.action.setFeaturedImage(prevImage) : this.props.action.setFeaturedImage(nextImage);
       }
@@ -75,15 +88,31 @@ class Sidebar extends Component {
     this.props.action.closeSidebar();
   }
 
+  // wrap this into one fn for both click + keydown events?
   handleFeatureClick(event) {
     let ww = window.innerWidth;
     let clickBounds = ww / 2;
-    // length needs to be dynamic; .length of files in arr
-    let length = 20;
+    let limit  
+    let collections = this.props.data.data.children[0];
+    
+    if (this.props.numberOfCollections > 1) {
+      let allImages = [];
+      collections.posts.forEach(x => {
+        x.images.thumbnails.forEach(image => {
+          allImages.push(image);
+        });
+      });
+      limit = allImages.length 
+    }
+    else {
+      let images = collections.posts[0].images.originals;
+      limit = images.length
+    }
+
     let nextImage =
-      this.props.currentFeature < length ? this.props.currentFeature + 1 : 1;
+      this.props.currentFeature < limit ? this.props.currentFeature + 1 : 1;
     let prevImage =
-      this.props.currentFeature > 1 ? this.props.currentFeature - 1 : length;
+      this.props.currentFeature > 1 ? this.props.currentFeature - 1 : limit;
     let x = event.pageX;
     if (x <= clickBounds) {
       this.props.action.setFeaturedImage(prevImage);
@@ -93,76 +122,84 @@ class Sidebar extends Component {
   }
 
   render() {
-    const self = this;
+    if (this.props.data.length === 0) {
+      // loader 
+      return <div></div>
+    }
+    else {
+      const self = this;
+  
+      const FeaturedImage = styled.img`
+        max-height: 90%;
+        max-width: 90%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        &:hover {
+          cursor: pointer;
+        }
+      `;
+  
+      const CloseButton = styled.div`
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #000;
+        margin: 20px 20px 0 0;
+        &:hover {
+          cursor: pointer;
+        }
+      `;
 
-    const FeaturedImage = styled.img`
-      max-height: 90%;
-      max-width: 90%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
-      &:hover {
-        cursor: pointer;
+      const Sidebar = this.sidebar;
+      const SidebarText = this.sidebarText;
+      let featuredNum = "(" + " " + this.props.currentFeature + " " + ")";
+
+      if (this.props.numberOfCollections > 1) {
+        const collections = this.props.data.data.children[0];
+        let allImages = [];
+        collections.posts.forEach(x => {
+          x.images.thumbnails.forEach(image => {
+            allImages.push(image);
+          });
+        });
+
+        return (
+          <Sidebar>
+            <SidebarText onClick={this.handleOpenClick.bind(this)}>
+              <span>{featuredNum}</span>
+            </SidebarText>
+            <CloseButton onClick={this.handleCloseClick.bind(this)}>
+              CLOSE
+            </CloseButton>
+            <FeaturedImage
+              onClick={this.handleFeatureClick.bind(this)}
+              src={allImages[this.props.currentFeature - 1].url}
+            />
+          </Sidebar>
+        );
       }
-    `;
-
-    const CloseButton = styled.div`
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: #000;
-      margin: 20px 20px 0 0;
-      &:hover {
-        cursor: pointer;
+      else {
+        let collections = this.props.data.data.children[0];
+        let images = collections.posts[0].images.originals 
+    
+        return (
+          <Sidebar>
+            <SidebarText onClick={this.handleOpenClick.bind(this)}>
+              <span>{featuredNum}</span>
+            </SidebarText>
+            <CloseButton onClick={this.handleCloseClick.bind(this)}>
+              CLOSE
+            </CloseButton>
+            <FeaturedImage
+              onClick={this.handleFeatureClick.bind(this)}
+              src={images[this.props.currentFeature - 1].url}
+            />
+          </Sidebar>
+        );
       }
-    `;
-
-    const base = process.env.PUBLIC_URL + "/assets/collection/";
-
-    // static for now
-    const images = [
-      base + "collection-1.jpg",
-      base + "collection-2.jpg",
-      base + "collection-3.jpg",
-      base + "collection-4.jpg",
-      base + "collection-5.jpg",
-      base + "collection-6.jpg",
-      base + "collection-7.jpg",
-      base + "collection-8.jpg",
-      base + "collection-9.jpg",
-      base + "collection-10.jpg",
-      base + "collection-11.jpg",
-      base + "collection-12.jpg",
-      base + "collection-13.jpg",
-      base + "collection-14.jpg",
-      base + "collection-15.jpg",
-      base + "collection-16.jpg",
-      base + "collection-17.jpg",
-      base + "collection-18.jpg",
-      base + "collection-19.jpg",
-      base + "collection-20.jpg"
-    ];
-
-    // to apply transitions, styles must be outside of render method
-    const Sidebar = this.sidebar;
-    const SidebarText = this.sidebarText;
-    let featuredNum = "(" + " " + this.props.currentFeature + " " + ")";
-
-    return (
-      <Sidebar>
-        <SidebarText onClick={this.handleOpenClick.bind(this)}>
-          <span>{featuredNum}</span>
-        </SidebarText>
-        <CloseButton onClick={this.handleCloseClick.bind(this)}>
-          CLOSE
-        </CloseButton>
-        <FeaturedImage
-          onClick={this.handleFeatureClick.bind(this)}
-          src={images[this.props.currentFeature - 1]}
-        />
-      </Sidebar>
-    );
+    }
   }
 }
 

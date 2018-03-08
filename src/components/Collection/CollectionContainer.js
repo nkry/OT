@@ -6,7 +6,10 @@ import Collection from "./Collection";
 const mapStateToProps = function(state, prop) {
   return {
     data: state.data,
-    mobile: state.mobile
+    mobile: state.mobile,
+    numberOfCollections: state.numberOfCollections,
+    showCollectionTitle: state.showCollectionTitle,
+    dynamicTitle: state.dynamicTitle
   };
 };
 

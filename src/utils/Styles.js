@@ -11,8 +11,9 @@ const fadeIn = keyframes`
 `;
 
 // fade animation makes /collections grid flash when sidebar is open?
+// position: absolute
 export const PageWrapper = styled.div`
-  position: absolute;
+  position: ${props => (props.landingGrid ? "absolute" : "relative")};
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: ${props => (props.landingGrid ? "0 10px" : "10px 10px")};
   grid-column-start: 1;
@@ -61,55 +62,57 @@ export const ImageCell = styled.div`
 
 // - 5px is visual hack
 export const MenuWrapperOne = styled.div`
-  left: 20px;
-  width: calc(100% - 90px);
-  position: fixed;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-column-start: 1;
-  grid-column-end: 25;
-  grid-row-start: 1;
-  grid-gap: 10px;
-  display: grid;
-  margin: 0;
-  height: 50px;
-  z-index: 3;
-  & * > #negative--kern {
-    letter-spacing: -0.065em;
-  }
-  & .collections--close {
-    margin: -5px 0 0 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex: 0 1;
-    justify-content: space-between;
-    white-space: no-wrap;
-    align-items: center;
-    & a {
-      color: black;
-      text-decoration: none;
-    }
-  }
-  & > ul {
-    grid-column-start: 2;
-    grid-column-end: 25;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0;
-    & > li {
-      margin: -5px 0 0 0;
-      padding: 0;
-      flex: 0 1;
-      display: inline;
-      white-space: nowrap;
-      list-style: none;
-      & a {
-        color: black;
-        text-decoration: none;
-      }
-    }
-  }`;
+         left: 20px;
+         width: calc(100% - 90px);
+         position: fixed;
+         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+         grid-column-start: 1;
+         grid-column-end: 25;
+         grid-row-start: 1;
+         grid-gap: 10px;
+         display: grid;
+         margin: 0;
+         height: 50px;
+         z-index: 3;
+         & * > #negative--kern {
+           letter-spacing: -0.065em;
+         }
+         & .collections--close {
+           margin: -5px 0 0 0;
+           padding: 0;
+           list-style: none;
+           display: flex;
+           flex: 0 1;
+           justify-content: space-between;
+           white-space: no-wrap;
+           align-items: center;
+           & a {
+             color: black;
+             text-decoration: none;
+           }
+         }
+         & > ul {
+           grid-column-start: 2;
+           grid-column-end: 25;
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           padding: 0;
+           & > li {
+             margin: -5px 0 0 0;
+             padding: 0;
+             flex: 0 1;
+             display: inline;
+             white-space: nowrap;
+             list-style: none;
+             & a {
+               color: black;
+               text-decoration: none;
+             }
+             &:first-child {
+             }
+           }
+         }`;
 
 // - 5px is visual hack
 export const MenuWrapperTwo = styled.div`
@@ -144,4 +147,29 @@ export const MenuWrapperTwo = styled.div`
         text-decoration: none;
       }
     }
+  }`;
+
+export const CollectionTitle = styled.div`
+  bottom: 0;
+  position: fixed;
+  color: black;
+  opacity: ${props => (props.showTitle ? 1 : 0)};
+  margin-bottom: 15px;
+ transition: opacity .15s linear;
+`;
+
+export const VideoCell = styled.div`
+  position: relative;
+  grid-column-start: 10;
+  grid-column-end: 25;
+  padding-bottom: 56.25%;
+  margin-bottom: 20px;
+  padding-top: 25px;
+  height: 0;
+  & iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }`;

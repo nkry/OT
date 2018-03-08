@@ -8,7 +8,8 @@ const mapStateToProps = function(state, prop) {
     data: state.data,
     mobile: state.mobile,
     currentFeature: state.currentFeature,
-    sidebarOpen: state.sidebarOpen
+    sidebarOpen: state.sidebarOpen,
+    numberOfCollections: state.numberOfCollections
   };
 };
 

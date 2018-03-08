@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { PageWrapper } from "../../utils/Styles";
 import { GradientWrapper } from "../../utils/Styles";
+import { CollectionTitle } from "../../utils/Styles";
 import Image from "./Image";
 
 class Collection extends Component {
   constructor(props) {
     super(props);
     const base = process.env.PUBLIC_URL + "/assets/collection/";
+    this.max = 19;
     this.settings = [
       {
         start: "2",
@@ -116,67 +118,85 @@ class Collection extends Component {
     this.props.action.setCurrentPage("collection");
   }
 
+  returnTitle(filename) {
+    let segment = filename.split("/").pop()
+    let title = segment.replace(/-/g, " ").toUpperCase()
+    return title
+  }
+
+  loopThroughGrid(arr) {
+    const self = this;
+    let i = 0;
+    let n = 0;
+    let speed = 0;
+    let row = 0;
+    let multipleCollections = this.props.numberOfCollections > 1 ? true : false;
+    let images = arr.map((x, key) => {
+      let title = this.returnTitle(x.dir);
+      if (i >= this.max) {
+        i = 0;
+      }
+      speed += 150;
+      n += 1;
+      i += 1;
+      let count = key >= this.max ? i : key;
+      if (key % 2 === 0) {
+        row += 1;
+      }
+      return (
+        <Image
+          setDynamicTitle={self.props.action.setDynamicTitle}
+          collectionTitle={title}
+          multiple={multipleCollections}
+          showCollectionTitle={self.props.action.showCollectionTitle}
+          hideCollectionTitle={self.props.action.hideCollectionTitle}
+          id={key}
+          start={self.settings[count].start}
+          end={self.settings[count].end}
+          row={row}
+          src={x.url}
+          index={key}
+          setFeaturedImage={self.props.action.setFeaturedImage}
+          openSidebar={self.props.action.openSidebar}
+          number={key + 1}
+          delay={speed}
+        />
+      );
+    });
+    return images;
+  }
+
   render() {
-    const self = this
+    const self = this;
 
     if (this.props.data.length === 0) {
-      console.log("return loader")
       // loader
-      return (
-        <div></div>
-      )
-    }
-    else {
-      let collections = this.props.data.data.children[0];
-      let collectionsNumber = collections.posts.length
-      let temporaryFakeNumber = 0
-      
-      // this will actually be a conditional, checking if collectionsNumber > 1
-      if (temporaryFakeNumber > 1) { 
-        // run through all collections
-      }
-      else {
-
-        collections.posts.map((i, key) => {
-          console.log(i, "collection")
-        })
-  
-        // targeting just [0] is temp
-        let collectionImages = collections.posts[0].images.thumbnails
-
-
-        // need to fix this — ordering is wrong when more than max (20) images are added
-        // may need to implement some form of sort?
-
-        const max = 19
-        let i = 0
-        let n = 0
-        let speed = 0
-
-        let images = collectionImages.map((x, key) => {
-          if (i >= max) {
-            i = 0
-          }
-          speed += 200;
-          n += 1
-          i += 1
-          let count = key >= max ? i : key 
-          return (
-            <Image
-              id={key}
-              start={self.settings[count].start} 
-              end={self.settings[count].end} 
-              row={self.settings[count].row} 
-              src={x.url} 
-              index={key}
-              setFeaturedImage={this.props.action.setFeaturedImage} 
-              openSidebar={this.props.action.openSidebar}
-              number={n}
-              delay={speed}
-              />
-          );
+      return <div />;
+    } else {
+      const collections = this.props.data.data.children[0];
+      if (this.props.numberOfCollections > 1) {
+        let allImages = [];
+        collections.posts.forEach(x => {
+          x.images.thumbnails.forEach(image => {
+            allImages.push(image);
+          });
         });
-    
+
+        let images = this.loopThroughGrid(allImages);
+        return (
+          <PageWrapper landingGrid={false}>
+            <GradientWrapper />
+            {images}
+            <CollectionTitle showTitle={this.props.showCollectionTitle}>
+              <div>{this.props.dynamicTitle}</div>
+            </CollectionTitle>
+          </PageWrapper>
+        );
+      } else {
+        // will not need to target [0] explicitly here?
+        let collectionImages = collections.posts[0].images.thumbnails;
+        let images = this.loopThroughGrid(collectionImages);
+
         return (
           <PageWrapper landingGrid={false}>
             <GradientWrapper />

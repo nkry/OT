@@ -6,6 +6,10 @@ import {
   SET_MAX_LANDING_IMAGES,
   UPDATE_LANDING,
   SET_FEATURED_IMAGE,
+  SET_COLLECTIONS_NUMBER,
+  SHOW_COLLECTION_TITLE,
+  HIDE_COLLECTION_TITLE,
+  SET_DYNAMIC_TITLE,
   IMAGES_CACHED,
   SET_STOCKISTS_DIST,
   SET_CONTACT_DIST,
@@ -28,10 +32,26 @@ export const rootReducer = (state = {}, action) => {
       return Object.assign({}, state, {
         mobile: action.x <= 480 ? true : false
       });
+    case SET_COLLECTIONS_NUMBER: 
+      return Object.assign({}, state, {
+        numberOfCollections: action.x
+      });
+    case SHOW_COLLECTION_TITLE: 
+      return Object.assign({}, state, {
+        showCollectionTitle: true
+      });
+    case HIDE_COLLECTION_TITLE: 
+      return Object.assign({}, state, {
+        showCollectionTitle: false
+      });
+    case SET_DYNAMIC_TITLE:
+      return Object.assign({}, state, {
+        dynamicTitle: action.str
+      });
     case SET_MAX_LANDING_IMAGES:
-    return Object.assign({}, state, {
-      maxLandingImages: action.x
-    });
+      return Object.assign({}, state, {
+        maxLandingImages: action.x
+      });
     case UPDATE_LANDING:
     return Object.assign({}, state, {
       landingLayout: state.landingLayout < state.maxLandingImages - 1 ? state.landingLayout += 1 : 0

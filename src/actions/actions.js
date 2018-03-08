@@ -12,6 +12,10 @@ export const CLOSE_SIDEBAR = "CLOSE_SIDEBAR";
 export const SET_MAX_LANDING_IMAGES = "SET_MAX_LANDING_IMAGES";
 export const UPDATE_LANDING = "UPDATE_LANDING";
 export const SET_FEATURED_IMAGE = "SET_FEATURED_IMAGE";
+export const SET_COLLECTIONS_NUMBER = "SET_COLLECTIONS_NUMBER";
+export const SHOW_COLLECTION_TITLE = "SHOW_COLLECTION_TITLE";
+export const HIDE_COLLECTION_TITLE = "HIDE_COLLECTION_TITLE";
+export const SET_DYNAMIC_TITLE = "SET_DYNAMIC_TITLE";
 export const SET_STOCKISTS_DIST = "SET_STOCKISTS_DIST";
 export const SET_CONTACT_DIST = "SET_CONTACT_DIST";
 export const IMAGES_CACHED = "IMAGES_CACHED";
@@ -25,6 +29,34 @@ export function checkDeviceWidth(x) {
     x
   };
 }
+
+export function setCollectionsNumber(x) {
+  return {
+    type: "SET_COLLECTIONS_NUMBER",
+    x
+  }
+}
+
+export function showCollectionTitle() {
+  return {
+    type: "SHOW_COLLECTION_TITLE"
+  }
+}
+
+export function setDynamicTitle(str) {
+  console.log("set title to", str)
+  return {
+    type: "SET_DYNAMIC_TITLE",
+    str
+  }
+}
+
+export function hideCollectionTitle() {
+  return {
+    type: "HIDE_COLLECTION_TITLE"
+  }
+}
+
 
 export function setMaxLanding(x) {
   return {
@@ -106,7 +138,10 @@ export function getData() {
     return axios
       .get(endpoint)
       .then(response => {
-        console.log("data", response);
+        let data = response.data
+        let collections = data.children[0].posts
+        let length = collections.length
+        dispatch(setCollectionsNumber(length));
         dispatch(passData(response));
       })
       .then(response => {

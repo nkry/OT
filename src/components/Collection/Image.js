@@ -19,6 +19,21 @@ class Image extends Component {
   handleMouseOver(n) {
     let num = n + 1;
     this.props.setFeaturedImage(num);
+    if (this.props.multiple) {
+      this.props.showCollectionTitle()
+      this.props.setDynamicTitle(this.props.collectionTitle);
+    } else {
+      return false;
+    }
+  }
+
+  handleMouseLeave() {
+    if (this.props.multiple) {
+      this.props.hideCollectionTitle();
+    }
+    else {
+      return false 
+    }
   }
 
   returnLoadStatus(time) {
@@ -41,9 +56,10 @@ class Image extends Component {
         visible={this.state.loaded}
         onClick={this.handleThumbnailClick.bind(this)}
         onMouseOver={this.handleMouseOver.bind(this, this.props.index)}
+        onMouseLeave={this.handleMouseLeave.bind(this)}
       >
-      <span>( {this.props.number} )</span>
-      <img src={this.props.src} />
+        <span>( {this.props.number} )</span>
+        <img src={this.props.src} />
       </ImageCell>
     );
   }
