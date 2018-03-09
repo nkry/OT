@@ -24,6 +24,9 @@ export const PageWrapper = styled.div`
   display: grid;
   height: 100%;
   animation: 1s ${fadeIn} ease-out;
+  @supports not (display: grid) {
+    position: relative;
+  }
 `;
 
 export const GradientWrapper = styled.div`
@@ -42,6 +45,13 @@ export const ImageCell = styled.div`
   grid-column-end: ${props => props.end};
   grid-row-start: ${props => props.row};
   position: relative;
+  @supports not (display: grid) {
+    width: 30vw;
+    max-width: 540px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 1.5em;
+  }
   & span {
     position: absolute;
     top: 50%;
@@ -62,57 +72,63 @@ export const ImageCell = styled.div`
 
 // - 5px is visual hack
 export const MenuWrapperOne = styled.div`
-         left: 20px;
-         width: calc(100% - 90px);
-         position: fixed;
-         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-         grid-column-start: 1;
-         grid-column-end: 25;
-         grid-row-start: 1;
-         grid-gap: 10px;
-         display: grid;
-         margin: 0;
-         height: 50px;
-         z-index: 3;
-         & * > #negative--kern {
-           letter-spacing: -0.065em;
-         }
-         & .collections--close {
-           margin: -5px 0 0 0;
-           padding: 0;
-           list-style: none;
-           display: flex;
-           flex: 0 1;
-           justify-content: space-between;
-           white-space: no-wrap;
-           align-items: center;
-           & a {
-             color: black;
-             text-decoration: none;
-           }
-         }
-         & > ul {
-           grid-column-start: 2;
-           grid-column-end: 25;
-           display: flex;
-           align-items: center;
-           justify-content: space-between;
-           padding: 0;
-           & > li {
-             margin: -5px 0 0 0;
-             padding: 0;
-             flex: 0 1;
-             display: inline;
-             white-space: nowrap;
-             list-style: none;
-             & a {
-               color: black;
-               text-decoration: none;
-             }
-             &:first-child {
-             }
-           }
-         }`;
+  left: 20px;
+  width: calc(100% - 90px);
+  position: fixed;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column-start: 1;
+  grid-column-end: 25;
+  grid-row-start: 1;
+  grid-gap: 10px;
+  display: grid;
+  margin: 0;
+  height: 50px;
+  z-index: 3;
+  & * > #negative--kern {
+    letter-spacing: -0.065em;
+  }
+  & .collections--close {
+    margin: -5px 0 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex: 0 1;
+    justify-content: space-between;
+    white-space: no-wrap;
+    align-items: center;
+    & a {
+      color: black;
+      text-decoration: none;
+    }
+    @supports not (display: grid) {
+      display: none;
+    }
+  }
+  & > ul {
+    grid-column-start: 2;
+    grid-column-end: 25;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    @supports not (display: grid) {
+      width: calc(100% - 50px);
+    }
+    & > li {
+      margin: -5px 0 0 0;
+      padding: 0;
+      flex: 0 1;
+      display: inline;
+      white-space: nowrap;
+      list-style: none;
+      & a {
+        color: black;
+        text-decoration: none;
+      }
+      &:first-child {
+      }
+    }
+  }`;
 
 // - 5px is visual hack
 export const MenuWrapperTwo = styled.div`
@@ -135,6 +151,9 @@ export const MenuWrapperTwo = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 0;
+    @supports not (display: grid) {
+      width: calc(100% - 50px);
+    }
     & > li {
       margin: -5px 0 0 0;
       padding: 0;
@@ -166,10 +185,19 @@ export const VideoCell = styled.div`
   margin-bottom: 20px;
   padding-top: 25px;
   height: 0;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50vw;
+    margin: -2em 0 1em 0;
+  }
   & iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-  }`;
+  }
+  `;

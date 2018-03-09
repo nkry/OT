@@ -1,13 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 
+// fallback for no grid support — iterate between 2 layouts of stacked vertically + stacked horizontally
 export const ImageOne = styled.img`
   grid-column-start: 3;
   grid-column-end: 11;
   width: 100%;
   user-select: none;
-  opacity: ${props => props.loaded ? 1 : 0};
+  opacity: ${props => (props.loaded ? 1 : 0)};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+    margin-bottom: 1em;
+  }
 `;
 
 export const ImageTwo = styled.img`
@@ -20,6 +30,14 @@ export const ImageTwo = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+  }
 `;
 
 export const ImageThree = styled.img`
@@ -32,6 +50,15 @@ export const ImageThree = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+    margin-bottom: 1em;
+  }
 `;
 
 export const ImageFour = styled.img`
@@ -42,6 +69,14 @@ export const ImageFour = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+  }
 `;
 
 export const ImageFive = styled.img`
@@ -52,6 +87,15 @@ export const ImageFive = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+    margin-bottom: 1em;
+  }
 `;
 
 export const ImageSix = styled.img`
@@ -64,6 +108,14 @@ export const ImageSix = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+  }
 `;
 
 export const ImageSeven = styled.img`
@@ -76,6 +128,15 @@ export const ImageSeven = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+    margin-bottom: 1em;
+  }
 `;
 
 export const ImageEight = styled.img`
@@ -88,6 +149,14 @@ export const ImageEight = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+  }
 `;
 
 export const ImageNine = styled.img`
@@ -98,6 +167,15 @@ export const ImageNine = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+    margin-bottom: 1em;
+  }
 `;
 
 export const ImageTen = styled.img`
@@ -110,6 +188,14 @@ export const ImageTen = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  @supports not (display: grid) {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 45vh;
+    width: auto;
+  }
 `;
 
 
