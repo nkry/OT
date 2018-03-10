@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { breakpoints } from "./Breakpoints";
+import { device } from "./Breakpoints";
 
 // fallback for no grid support — iterate between 2 layouts of stacked vertically + stacked horizontally
 export const ImageOne = styled.img`
@@ -10,17 +12,33 @@ export const ImageOne = styled.img`
   opacity: ${props => (props.loaded ? 1 : 0)};
   transition: opacity .15s linear;
   @supports not (display: grid) {
-    display: block;
+    grid-column-start: none;
+    grid-column-end: none;
+    display: inline-block;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
+    max-height: 45%;
     width: auto;
+    max-width: calc(100vw - 60px);
+    background: red;
     margin-bottom: 1em;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
   }
-  @media (max-width: 480px) {
-    grid-column-start: 3;
-    grid-column-end: 7;
+  @media ${device.mobilePortrait} {
+    grid-column-start: 2;
+    grid-column-end: 8;
+  }
+  @media ${device.mobileLandscape} {
+    grid-column-start: 2;
+    grid-column-end: 8;
+    width: auto;
+    max-height: 100%;
   }
 `;
 
@@ -39,8 +57,27 @@ export const ImageTwo = styled.img`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
+    max-height: 45%;
+    max-width: calc(100vw - 60px);
     width: auto;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobilePortrait} {
+    grid-row-start: 3;
+    grid-column-start: 6;
+    grid-column-end: 12;
+  }
+  @media ${device.mobileLandscape} {
+    grid-row-start: 3;
+    grid-column-start: 6;
+    grid-column-end: 12;
+    width: auto;
+    max-height: 100%;
   }
 `;
 
@@ -59,9 +96,27 @@ export const ImageThree = styled.img`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
-    width: auto;
     margin-bottom: 1em;
+    max-height: 45%;
+    max-width: calc(100vw - 60px);
+    width: auto;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobilePortrait} {
+    grid-column-start: 2;
+    grid-column-end: 8;
+  }
+  @media ${device.mobileLandscape} {
+    grid-row-start: 3;
+    grid-column-start: 2;
+    grid-column-end: 8;
+    width: auto;
+    max-height: 100%;
   }
 `;
 
@@ -78,8 +133,25 @@ export const ImageFour = styled.img`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
+    max-height: 45%;
+    max-width: calc(100vw - 60px);
     width: auto;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobilePortrait} {
+    grid-column-start: 4;
+    grid-column-end: 10;
+  }
+  @media ${device.mobileLandscape} {
+    grid-column-start: 4;
+    grid-column-end: 10;
+    width: auto;
+    max-height: 100%;
   }
 `;
 
@@ -96,9 +168,26 @@ export const ImageFive = styled.img`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
-    width: auto;
     margin-bottom: 1em;
+    max-height: 45%;
+    max-width: calc(100vw - 60px);
+    width: auto;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobilePortrait} {
+    grid-column-start: 3;
+    grid-column-end: 9;
+  }
+  @media ${device.mobileLandscape} {
+    grid-column-start: 3;
+    grid-column-end: 9;
+    width: auto;
+    max-height: 100%;
   }
 `;
 
@@ -117,8 +206,25 @@ export const ImageSix = styled.img`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
+    max-height: 45%;
+    max-width: calc(100vw - 60px);
     width: auto;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobilePortrait} {
+    grid-column-start: 3;
+    grid-column-end: 9;
+  }
+  @media ${device.mobileLandscape} {
+    grid-column-start: 3;
+    grid-column-end: 9;
+    width: auto;
+    max-height: 100%;
   }
 `;
 
@@ -137,9 +243,26 @@ export const ImageSeven = styled.img`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
-    width: auto;
     margin-bottom: 1em;
+    max-height: 45%;
+    max-width: calc(100vw - 60px);
+    width: auto;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobilePortrait} {
+    grid-column-start: 2;
+    grid-column-end: 8;
+  }
+  @media ${device.mobileLandscape} {
+    grid-column-start: 2;
+    grid-column-end: 8;
+    width: auto;
+    max-height: 100%;
   }
 `;
 
@@ -158,8 +281,27 @@ export const ImageEight = styled.img`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
+    max-height: 45%;
+    max-width: calc(100vw - 60px);
     width: auto;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobilePortrait} {
+    grid-row-start: 1;
+    grid-column-start: 5;
+    grid-column-end: 11;
+  }
+  @media ${device.mobileLandscape} {
+    grid-row-start: 1;
+    grid-column-start: 5;
+    grid-column-end: 11;
+    width: auto;
+    max-height: 100%;
   }
 `;
 
@@ -176,9 +318,26 @@ export const ImageNine = styled.img`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
-    width: auto;
     margin-bottom: 1em;
+    max-height: 45%;
+    max-width: calc(100vw - 60px);
+    width: auto;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobilePortrait} {
+    grid-column-start: 6;
+    grid-column-end: 12;
+  }
+  @media ${device.mobileLandscape} {
+    grid-column-start: 6;
+    grid-column-end: 12;
+    width: auto;
+    max-height: 100%;
   }
 `;
 
@@ -197,8 +356,25 @@ export const ImageTen = styled.img`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    max-height: 45vh;
+    max-height: 45%;
+    max-width: calc(100vw - 60px);
     width: auto;
+    @media ${device.mobilePortrait} {
+      margin-left: 20px;
+    }
+    @media ${device.mobileLandscape} {
+      margin-left: 20px;
+    }
+  }
+  @media ${device.mobilePortrait} {
+    grid-column-start: 6;
+    grid-column-end: 12;
+  }
+  @media ${device.mobileLandscape} {
+    grid-column-start: 6;
+    grid-column-end: 12;
+    width: auto;
+    max-height: 100%;
   }
 `;
 

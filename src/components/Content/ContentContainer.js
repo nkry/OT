@@ -30,11 +30,13 @@ class Container extends Component {
     }
     else {
       let data = this.props.data.data.children[1]; 
-      // console.log("data in container", data)
       if (data.posts.length <= 1) {
-        return (
-          <Fullscreen setCurrentPage={this.props.action.setCurrentPage} data={data} mobile={this.props.mobile} />
-        )
+        if (this.props.mobile) {
+          return <Content setCurrentPage={this.props.action.setCurrentPage} data={data} mobile={this.props.mobile} />
+        }
+        else {
+          return <Fullscreen setCurrentPage={this.props.action.setCurrentPage} data={data} mobile={this.props.mobile} />
+        }
       }
       else {
         return (

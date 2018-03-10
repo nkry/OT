@@ -13,7 +13,9 @@ export const SET_MAX_LANDING_IMAGES = "SET_MAX_LANDING_IMAGES";
 export const UPDATE_LANDING = "UPDATE_LANDING";
 export const SET_FEATURED_IMAGE = "SET_FEATURED_IMAGE";
 export const SET_COLLECTIONS_NUMBER = "SET_COLLECTIONS_NUMBER";
-export const IMAGES_CACHED = "IMAGES_CACHED"
+export const SET_COLLECTION_LENGTH = "SET_COLLECTION_LENGTH";
+export const UPDATE_COLLECTION_LOADED = "UPDATE_COLLECTION_LOADED";
+export const CACHE_COLLECTION = "CACHE_COLLECTION";
 export const SHOW_COLLECTION_TITLE = "SHOW_COLLECTION_TITLE";
 export const HIDE_COLLECTION_TITLE = "HIDE_COLLECTION_TITLE";
 export const SET_DYNAMIC_TITLE = "SET_DYNAMIC_TITLE";
@@ -40,7 +42,20 @@ export function setCollectionsNumber(x) {
 
 export function cacheCollection() {
   return {
-    type: "COLLECTION_CACHED"
+    type: "CACHE_COLLECTION"
+  }
+}
+
+export function setCollectionLength(x) {
+  return {
+    type: "SET_COLLECTION_LENGTH",
+    x
+  }
+}
+
+export function updateCollectionLoaded() {
+  return {
+    type: "UPDATE_COLLECTION_LOADED"
   }
 }
 

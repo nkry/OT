@@ -94,8 +94,29 @@ class Collection extends Component {
     ];
   }
 
+  countImages(arr) {
+    let count = 0;
+    arr.posts.map((x, key) => {
+      x.images.thumbnails.map((i, key) => {
+        count += 1;
+      });
+    });
+    return count 
+  }
+
   componentDidMount() {
     this.props.setCurrentPage("collection");
+    let data = this.props.data.data.children[0];
+    let count = this.countImages(data)
+    this.props.setCollectionLength(count);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.data !== this.props.data) {
+       let data = this.props.data.data.children[0];
+       let count = this.countImages(data);
+       this.props.setCollectionLength(count);
+    }
   }
 
   returnTitle(filename) {
@@ -116,7 +137,7 @@ class Collection extends Component {
       if (i >= this.max) {
         i = 0;
       }
-      speed += 150;
+      speed += 125;
       n += 1;
       i += 1;
       let count = key >= this.max ? i : key;
@@ -130,7 +151,11 @@ class Collection extends Component {
 
       return (
         <Image
+          collectionLength={this.props.collectionLength}
+          collectionLoaded={this.props.collectionLoaded}
+          collectionCached={this.props.collectionCached}
           cacheCollection={this.props.cacheCollection}
+          updateCollectionLoaded={self.props.updateCollectionLoaded}
           setDynamicTitle={self.props.setDynamicTitle}
           collectionTitle={title}
           multiple={multipleCollections}
@@ -153,9 +178,7 @@ class Collection extends Component {
   }
 
   render() {
-    console.log("render collection");
     const self = this;
-
     if (this.props.data.length === 0) {
       // loader
       return <div />;

@@ -10,7 +10,9 @@ import {
   SHOW_COLLECTION_TITLE,
   HIDE_COLLECTION_TITLE,
   SET_DYNAMIC_TITLE,
-  COLLECTION_CACHED,
+  UPDATE_COLLECTION_LOADED,
+  CACHE_COLLECTION,
+  SET_COLLECTION_LENGTH,
   SET_STOCKISTS_DIST,
   SET_CONTACT_DIST,
   REQUEST,
@@ -36,7 +38,15 @@ export const rootReducer = (state = {}, action) => {
       return Object.assign({}, state, {
         numberOfCollections: action.x
       });
-    case COLLECTION_CACHED:
+    case SET_COLLECTION_LENGTH: 
+      return Object.assign({}, state, {
+        collectionLength: action.x
+      });
+    case UPDATE_COLLECTION_LOADED:
+      return Object.assign({}, state, {
+        collectionLoaded: state.collectionLoaded += 1
+      });
+    case CACHE_COLLECTION: 
       return Object.assign({}, state, {
         collectionCached: true
       });

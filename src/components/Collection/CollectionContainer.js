@@ -10,7 +10,10 @@ const mapStateToProps = function(state, prop) {
     mobile: state.mobile,
     numberOfCollections: state.numberOfCollections,
     showCollectionTitle: state.showCollectionTitle,
-    dynamicTitle: state.dynamicTitle
+    dynamicTitle: state.dynamicTitle,
+    collectionLength: state.collectionLength,
+    collectionLoaded: state.collectionLoaded,
+    collectionCached: state.collectionCached
   };
 };
 
@@ -28,7 +31,12 @@ class Container extends Component {
   render() {
     return (
       <Collection
+        collectionLength={this.props.collectionLength}
+        collectionLoaded={this.props.collectionLoaded}
+        collectionCached={this.props.collectionCached}
         cacheCollection={this.props.action.cacheCollection}
+        setCollectionLength={this.props.action.setCollectionLength}
+        updateCollectionLoaded={this.props.action.updateCollectionLoaded}
         setCurrentPage={this.props.action.setCurrentPage}
         data={this.props.data}
         mobile={this.props.mobile}

@@ -1,5 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import { breakpoints } from './Breakpoints'
+import { device } from './Breakpoints'
 
 const fadeIn = keyframes`
   0% {
@@ -10,7 +12,7 @@ const fadeIn = keyframes`
   }
 `;
 
-// make media sizes a variable
+// was max-width: 480px standard query
 export const PageWrapper = styled.div`
   position: ${props => (props.landingGrid ? "absolute" : "relative")};
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -26,10 +28,18 @@ export const PageWrapper = styled.div`
   @supports not (display: grid) {
     position: relative;
   }
-  @media (max-width: 480px) {
-    height: 100vh;
+  @media ${device.mobilePortrait} {  
     position: ${props => (props.landingGrid ? "absolute" : "relative")};
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column-start: 1;
+    grid-column-end: 13;
+  }
+  @media ${device.mobileLandscape} {  
+    width: 100%;
+    position: ${props => (props.landingGrid ? "absolute" : "relative")};
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column-start: 1;
+    grid-column-end: 13;
   }
 `;
 
@@ -42,7 +52,10 @@ export const GradientWrapper = styled.div`
   position: fixed;
   top: 0;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-  @media (max-width: 480px) {
+  @media ${device.mobilePortrait} {  
+    width: 100vw;
+  }
+  @media ${device.mobileLandscape} {  
     width: 100vw;
   }
 `;
@@ -58,29 +71,44 @@ export const ImageCell = styled.div`
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 1.5em;
+    @media ${device.mobilePortrait} { 
+      margin-left: 30px;
+      left: 0;
+      transform: translateX(0);
+      width: calc(100% - 30px);
+      pointer-events: none;
+    }
   }
-  @media (max-width: 480px) {
+  @media ${device.mobilePortrait} {  
     position: relative;
     grid-column-start: 2;
     grid-column-end: 13;
+    pointer-events: none;
+  }
+  @media ${device.mobileLandscape} {  
+    position: relative;
+    grid-column-start: 4;
+    grid-column-end: 10;
+    pointer-events: none;
   }
   & span {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    opacity: ${props => props.visible ? 0 : 1};
+    opacity: ${props => (props.visible ? 0 : 1)};
     color: #000;
   }
   & img {
     width: 100%;
-    opacity: ${props => props.visible ? 1 : 0};
-    transition: opacity .15s linear;
+    opacity: ${props => (props.visible ? 1 : 0)};
+    transition: opacity .15s linear};
   }
   &:hover {
     cursor: pointer;
   }
 `;
+
 
 // - 5px is visual hack
 // 100vw - 40px is for 20px margin on mobile centered
@@ -96,7 +124,7 @@ export const MenuWrapperOne = styled.div`
   display: grid;
   margin: 0;
   height: 50px;
-  @media (max-width: 480px) {
+  @media ${device.mobilePortrait} {  
     width: calc(100vw - 40px);
   }
   z-index: 3;
@@ -130,6 +158,9 @@ export const MenuWrapperOne = styled.div`
     @supports not (display: grid) {
       width: calc(100% - 50px);
     }
+    @media ${device.mobilePortrait} {  
+      width: 100%;
+    }
     & > li {
       margin: -5px 0 0 0;
       padding: 0;
@@ -143,7 +174,10 @@ export const MenuWrapperOne = styled.div`
       }
       &:first-child {
       }
-      @media (max-width: 480px) {
+      @supports not (display: grid) {
+        flex: none;
+      }
+      @media ${device.mobilePortrait} {  
         white-space: wrap;
       }
     }
@@ -173,6 +207,9 @@ export const MenuWrapperTwo = styled.div`
     @supports not (display: grid) {
       width: calc(100% - 50px);
     }
+    @media ${device.mobilePortrait} {  
+      width: 100%;
+    }
     & > li {
       margin: -5px 0 0 0;
       padding: 0;
@@ -180,6 +217,9 @@ export const MenuWrapperTwo = styled.div`
       display: inline;
       white-space: nowrap;
       list-style: none;
+      @supports not (display: grid) {
+        flex: none;
+      }
       & a {
         color: black;
         text-decoration: none;
@@ -193,7 +233,7 @@ export const CollectionTitle = styled.div`
   color: black;
   opacity: ${props => (props.showTitle ? 1 : 0)};
   margin-bottom: 15px;
- transition: opacity .15s linear;
+  transition: opacity .15s linear;
 `;
 
 export const VideoCell = styled.div`
@@ -211,6 +251,12 @@ export const VideoCell = styled.div`
     transform: translateX(-50%);
     width: 50vw;
     margin: -2em 0 1em 0;
+    @media ${device.mobilePortrait} {  
+      left: 0;
+      transform: translateX(0);
+      margin-left: 30px;
+      width: calc(100% - 30px);
+    }
   }
   & iframe {
     position: absolute;
@@ -219,7 +265,7 @@ export const VideoCell = styled.div`
     width: 100%;
     height: 100%;
   }
-  @media (max-width: 480px) {
+  @media ${device.mobilePortrait} {  
    margin-bottom: 0;
    grid-column-start: 2;
    grid-column-end: 13;

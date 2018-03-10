@@ -12,6 +12,7 @@ html,body {
   font-size: 14px;
   line-height: 16px;
   letter-spacing: -0.0125em;
+  -webkit-overflow-scrolling: touch;
   &::-webkit-scrollbar { 
     display: none; 
   }

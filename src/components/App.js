@@ -6,6 +6,8 @@ import MenuContainer from './Menu/MenuContainer'
 import SidebarContainer from "./Sidebar/SidebarContainer";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { breakpoints } from "../utils/Breakpoints";
+import { device } from "../utils/Breakpoints";
 
 const mapStateToProps = function(state, prop) {
   return {
@@ -83,24 +85,29 @@ class Container extends Component {
       grid-template-rows: repeat(3, calc(33.3% - 20px));
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-gap: 0 10px;
-      @media (max-width: 480px) {
+      @media ${device.mobilePortrait} {
         width: calc(100vw - 40px);
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
+      @media ${device.mobileLandscape} {
+        width: calc(100% - ${minusContainer});
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       }
     `;
 
-    // need to add breakpoints for fixed px width
     const Logo = styled.img`
       z-index: 2;
       width: 8px;
       position: fixed;
-      max-height: 80%;
+      max-height: 70%;
       top: 50%;
       transform: translateY(-50%);
-      @media (max-width: 480px) {
+      media ${device.mobilePortrait} {
         width: 6px;
       }
-    `;
+      media ${device.mobileLandscape} {
+        width: 6px;
+      }`;
 
     return (
       <div className="app--wrapper">

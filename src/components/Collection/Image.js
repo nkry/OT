@@ -9,6 +9,7 @@ class Image extends Component {
     const self = this;
     this.state = {
       loaded: false,
+      showNumber: false,
       loadCount: 0
     };
   }
@@ -36,24 +37,25 @@ class Image extends Component {
     }
   }
   
-  // could also call fn here, which counts the images loaded
-  // compare the count to .length passed from data
-  // once count === length, call an action that states collection images are loaded
-  // this can be used in global state
   returnLoadStatus(time) {
     const self = this;
-    // temp! -- need to pass down
-    let max = 40
+    this.props.updateCollectionLoaded()
+    // now compare length loaded against length of collections
+    if ((this.props.collectionLength - 1) === this.props.collectionLoaded) {
+      this.props.cacheCollection()
+    }
+    let conditionalDelay = this.props.collectionCached ? 0 : time
     setTimeout(() => {
       this.setState({
         loaded: true
       });
-    }, time);
+    }, conditionalDelay);
   }
 
   render() {
     return (
       <ImageCell
+        cached={this.props.collectionCached}
         id={this.props.id}
         start={this.props.start}
         end={this.props.end}
