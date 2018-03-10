@@ -8,7 +8,8 @@ class Image extends Component {
     super(props);
     const self = this;
     this.state = {
-      loaded: false
+      loaded: false,
+      loadCount: 0
     };
   }
 
@@ -20,7 +21,7 @@ class Image extends Component {
     let num = n + 1;
     this.props.setFeaturedImage(num);
     if (this.props.multiple) {
-      this.props.showCollectionTitle()
+      this.props.showCollectionTitle();
       this.props.setDynamicTitle(this.props.collectionTitle);
     } else {
       return false;
@@ -30,14 +31,19 @@ class Image extends Component {
   handleMouseLeave() {
     if (this.props.multiple) {
       this.props.hideCollectionTitle();
-    }
-    else {
-      return false 
+    } else {
+      return false;
     }
   }
-
+  
+  // could also call fn here, which counts the images loaded
+  // compare the count to .length passed from data
+  // once count === length, call an action that states collection images are loaded
+  // this can be used in global state
   returnLoadStatus(time) {
     const self = this;
+    // temp! -- need to pass down
+    let max = 40
     setTimeout(() => {
       this.setState({
         loaded: true

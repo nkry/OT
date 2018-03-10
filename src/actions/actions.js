@@ -13,12 +13,13 @@ export const SET_MAX_LANDING_IMAGES = "SET_MAX_LANDING_IMAGES";
 export const UPDATE_LANDING = "UPDATE_LANDING";
 export const SET_FEATURED_IMAGE = "SET_FEATURED_IMAGE";
 export const SET_COLLECTIONS_NUMBER = "SET_COLLECTIONS_NUMBER";
+export const IMAGES_CACHED = "IMAGES_CACHED"
 export const SHOW_COLLECTION_TITLE = "SHOW_COLLECTION_TITLE";
 export const HIDE_COLLECTION_TITLE = "HIDE_COLLECTION_TITLE";
 export const SET_DYNAMIC_TITLE = "SET_DYNAMIC_TITLE";
 export const SET_STOCKISTS_DIST = "SET_STOCKISTS_DIST";
 export const SET_CONTACT_DIST = "SET_CONTACT_DIST";
-export const IMAGES_CACHED = "IMAGES_CACHED";
+export const COLLECTION_CACHED = "COLLECTION_CACHED";
 export const REQUEST = "REQUEST";
 export const RESPONSE = "RESPONSE";
 export const PAYLOAD = "PAYLOAD";
@@ -34,6 +35,12 @@ export function setCollectionsNumber(x) {
   return {
     type: "SET_COLLECTIONS_NUMBER",
     x
+  }
+}
+
+export function cacheCollection() {
+  return {
+    type: "COLLECTION_CACHED"
   }
 }
 
@@ -72,6 +79,7 @@ export function updateLanding() {
 }
 
 export function setCurrentPage(str) {
+  console.log("set current page", str)
   return {
     type: "SET_CURRENT_PAGE",
     str

@@ -7,7 +7,8 @@ const mapStateToProps = function(state, prop) {
   return {
     data: state.data,
     mobile: state.mobile,
-    landingLayout: state.landingLayout
+    landingLayout: state.landingLayout,
+    currentPage: state.currentPage
   };
 };
 

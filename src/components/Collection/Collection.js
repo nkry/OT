@@ -8,9 +8,8 @@ import Image from "./Image";
 class Collection extends Component {
   constructor(props) {
     super(props);
-    const base = process.env.PUBLIC_URL + "/assets/collection/";
     this.max = 19;
-    const self = this
+    const self = this;
     this.settings = [
       {
         start: "2",
@@ -96,13 +95,13 @@ class Collection extends Component {
   }
 
   componentDidMount() {
-    this.props.action.setCurrentPage("collection");
+    this.props.setCurrentPage("collection");
   }
 
   returnTitle(filename) {
-    let segment = filename.split("/").pop()
-    let title = segment.replace(/-/g, " ").toUpperCase()
-    return title
+    let segment = filename.split("/").pop();
+    let title = segment.replace(/-/g, " ").toUpperCase();
+    return title;
   }
 
   loopThroughGrid(arr) {
@@ -122,28 +121,29 @@ class Collection extends Component {
       i += 1;
       let count = key >= this.max ? i : key;
       if (this.props.mobile) {
-        row += 1
-      }
-      else {
+        row += 1;
+      } else {
         if (key % 2 === 0) {
           row += 1;
         }
       }
+
       return (
         <Image
-          setDynamicTitle={self.props.action.setDynamicTitle}
+          cacheCollection={this.props.cacheCollection}
+          setDynamicTitle={self.props.setDynamicTitle}
           collectionTitle={title}
           multiple={multipleCollections}
-          showCollectionTitle={self.props.action.showCollectionTitle}
-          hideCollectionTitle={self.props.action.hideCollectionTitle}
+          showCollectionTitle={self.props.showCollectionTitle}
+          hideCollectionTitle={self.props.hideCollectionTitle}
           id={key}
           start={self.settings[count].start}
           end={self.settings[count].end}
           row={row}
           src={x.url}
           index={key}
-          setFeaturedImage={self.props.action.setFeaturedImage}
-          openSidebar={self.props.action.openSidebar}
+          setFeaturedImage={self.props.setFeaturedImage}
+          openSidebar={self.props.openSidebar}
           number={key + 1}
           delay={speed}
         />
@@ -153,6 +153,7 @@ class Collection extends Component {
   }
 
   render() {
+    console.log("render collection");
     const self = this;
 
     if (this.props.data.length === 0) {

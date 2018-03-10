@@ -11,7 +11,8 @@ const mapStateToProps = function(state, prop) {
   return {
     data: state.data,
     mobile: state.mobile,
-    sidebarOpen: state.sidebarOpen
+    sidebarOpen: state.sidebarOpen,
+    currentPage: state.currentPage
   };
 };
 
@@ -24,18 +25,12 @@ const mapDispatchToProps = function(dispatch) {
 class Container extends Component {
   constructor(props) {
     super(props);
-    this.state = { in: false };
   }
 
   componentDidMount() {
     const self = this;
-
     let ww = window.innerWidth;
     let resizeTimer;
-
-    self.setState({
-      in: false
-    });
 
     window.addEventListener("resize", () => {
       clearTimeout(resizeTimer);
@@ -47,8 +42,21 @@ class Container extends Component {
 
   handleLogoClick() {
     if (this.props.sidebarOpen) {
-      // could also take the sidebar out of wraped <Link> and use pushState here to '/'
-      this.props.action.closeSidebar()
+      this.props.action.closeSidebar();
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.location.pathname === '/collection') {
+      if (nextProps.data === this.props.data && nextProps.currentPage === this.props.currentPage) {
+        return false;
+      }
+      else {
+        return true
+      }
+    }
+    else {
+      return true
     }
   }
 
@@ -58,11 +66,11 @@ class Container extends Component {
     // all should be made global
     let singleMargin = 20;
     let pageMargin = singleMargin * 2;
-    let menuHeight = 50
+    let menuHeight = 50;
     let sidebarWidth = 50;
     let minusContainer = sidebarWidth + pageMargin + "px";
-    let winHeight = window.innerHeight - menuHeight
-    let containerHeight = winHeight - singleMargin
+    let winHeight = window.innerHeight - menuHeight;
+    let containerHeight = winHeight - singleMargin;
 
     // main wrapper for content which sits in grid
     const AppWrapper = styled.div`
@@ -71,7 +79,7 @@ class Container extends Component {
       position: absolute;
       width: calc(100% - ${minusContainer});
       display: grid;
-      height: ${containerHeight + 'px'};
+      height: ${containerHeight + "px"};
       grid-template-rows: repeat(3, calc(33.3% - 20px));
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-gap: 0 10px;

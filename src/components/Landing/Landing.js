@@ -9,6 +9,7 @@ class Landing extends Component {
   }
 
   componentDidMount() {
+    console.log("landing component mounted")
     this.props.action.setCurrentPage("/");
     let images = this.props.data.data.images.originals;
     let max = images.length / 2

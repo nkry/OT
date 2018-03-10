@@ -4,6 +4,7 @@ const initialState = {
   mobile: false,
   showCollectionTitle: false,
   numberOfCollections: false,
+  collectionCached: false,
   dynamicTitle: false,
   currentFeature: 1,
   maxLandingImages: 0,

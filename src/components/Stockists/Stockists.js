@@ -9,6 +9,10 @@ class Stockists extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.action.setCurrentPage("stockists");
+  }
+
   render() {
     if (this.props.stockistsOffset === false) {
       return (
