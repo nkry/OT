@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { PageWrapper } from "../../utils/Styles";
+import { GradientWrapper } from "../../utils/Styles";
 import { Markup } from "interweave";
 
 class Contact extends Component {
@@ -40,9 +41,12 @@ class Contact extends Component {
             text-decoration: none;
           }
           `;
+
+        let gradientCondition = this.props.mobile ? <GradientWrapper /> : false;
           
         return (
           <PageWrapper landingGrid={false}>
+            {gradientCondition}
             <ContactWrapper>
               <Markup content={contact} />
             </ContactWrapper>

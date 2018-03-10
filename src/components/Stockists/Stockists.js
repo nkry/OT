@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { PageWrapper } from "../../utils/Styles";
+import { GradientWrapper } from "../../utils/Styles";
 import { Markup } from "interweave";
 
 class Stockists extends Component {
@@ -41,9 +42,12 @@ class Stockists extends Component {
         const StockistsTitle = styled.div`
           text-transform: uppercase;
           `;
+
+        let gradientCondition = this.props.mobile ? <GradientWrapper /> : false;
           
         return (
           <PageWrapper landingGrid={false}>
+            {gradientCondition}
             <StockistsWrapper>
               <Markup content={stockists}/>
             </StockistsWrapper>

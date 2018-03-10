@@ -57,7 +57,7 @@ class Menu extends Component {
 
   render() {
       // title itself will be dynamic  
-      let singleTitle = <div>SPRING/SUMMER <span id="negative--kern">’18</span></div>
+      let singleTitle = this.props.mobile ? <div>S/S <span id="negative--kern">’18</span></div> : <div>SPRING/SUMMER <span id="negative--kern">’18</span></div>
       let collectionsTitle = "COLLECTIONS"
 
       if (this.props.data.length === 0) {

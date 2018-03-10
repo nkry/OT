@@ -10,106 +10,87 @@ class Collection extends Component {
     super(props);
     const base = process.env.PUBLIC_URL + "/assets/collection/";
     this.max = 19;
+    const self = this
     this.settings = [
       {
         start: "2",
-        end: "5",
-        row: "1"
+        end: "5"
       },
       {
         start: "17",
-        end: "20",
-        row: "1"
+        end: "20"
       },
       {
         start: "6",
-        end: "9",
-        row: "2"
+        end: "9"
       },
       {
         start: "9",
-        end: "12",
-        row: "2"
+        end: "12"
       },
       {
         start: "13",
-        end: "16",
-        row: "3"
+        end: "16"
       },
       {
         start: "16",
-        end: "19",
-        row: "3"
+        end: "19"
       },
       {
         start: "4",
-        end: "7",
-        row: "4"
+        end: "7"
       },
       {
         start: "21",
-        end: "24",
-        row: "4"
+        end: "24"
       },
       {
         start: "8",
-        end: "11",
-        row: "5"
+        end: "11"
       },
       {
         start: "12",
-        end: "15",
-        row: "5"
+        end: "15"
       },
       {
         start: "2",
-        end: "5",
-        row: "6"
+        end: "5"
       },
       {
         start: "12",
-        end: "15",
-        row: "6"
+        end: "15"
       },
       {
         start: "19",
-        end: "22",
-        row: "7"
+        end: "22"
       },
       {
         start: "22",
-        end: "25",
-        row: "7"
+        end: "25"
       },
       {
         start: "4",
-        end: "7",
-        row: "8"
+        end: "7"
       },
       {
         start: "7",
-        end: "10",
-        row: "8"
+        end: "10"
       },
       {
         start: "10",
-        end: "13",
-        row: "9"
+        end: "13"
       },
       {
         start: "17",
-        end: "20",
-        row: "9"
+        end: "20"
       },
       {
         start: "2",
-        end: "5",
-        row: "10"
+        end: "5"
       },
       {
         start: "13",
-        end: "16",
-        row: "10"
+        end: "16"
       }
     ];
   }
@@ -140,8 +121,13 @@ class Collection extends Component {
       n += 1;
       i += 1;
       let count = key >= this.max ? i : key;
-      if (key % 2 === 0) {
-        row += 1;
+      if (this.props.mobile) {
+        row += 1
+      }
+      else {
+        if (key % 2 === 0) {
+          row += 1;
+        }
       }
       return (
         <Image

@@ -18,6 +18,10 @@ export const ImageOne = styled.img`
     width: auto;
     margin-bottom: 1em;
   }
+  @media (max-width: 480px) {
+    grid-column-start: 3;
+    grid-column-end: 7;
+  }
 `;
 
 export const ImageTwo = styled.img`

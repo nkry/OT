@@ -75,6 +75,10 @@ class Container extends Component {
       grid-template-rows: repeat(3, calc(33.3% - 20px));
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-gap: 0 10px;
+      @media (max-width: 480px) {
+        width: calc(100vw - 40px);
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
     `;
 
     // need to add breakpoints for fixed px width
@@ -85,6 +89,9 @@ class Container extends Component {
       max-height: 80%;
       top: 50%;
       transform: translateY(-50%);
+      @media (max-width: 480px) {
+        width: 6px;
+      }
     `;
 
     return (

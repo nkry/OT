@@ -25,7 +25,7 @@ class Sidebar extends Component {
       margin-left: -3px;
       left: 25px;
       height: 45px;
-      width: 100%;
+      width: 100vh;
       text-align: center;
       background: red;
       background: #0b017a;
@@ -127,77 +127,82 @@ class Sidebar extends Component {
       return <div></div>
     }
     else {
-      const self = this;
-  
-      const FeaturedImage = styled.img`
-        max-height: 90%;
-        max-width: 90%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-        &:hover {
-          cursor: pointer;
-        }
-      `;
-  
-      const CloseButton = styled.div`
-        position: absolute;
-        top: 0;
-        right: 0;
-        color: #000;
-        margin: 20px 20px 0 0;
-        &:hover {
-          cursor: pointer;
-        }
-      `;
 
-      const Sidebar = this.sidebar;
-      const SidebarText = this.sidebarText;
-      let featuredNum = "(" + " " + this.props.currentFeature + " " + ")";
-
-      if (this.props.numberOfCollections > 1) {
-        const collections = this.props.data.data.children[0];
-        let allImages = [];
-        collections.posts.forEach(x => {
-          x.images.thumbnails.forEach(image => {
-            allImages.push(image);
-          });
-        });
-
-        return (
-          <Sidebar>
-            <SidebarText onClick={this.handleOpenClick.bind(this)}>
-              <span>{featuredNum}</span>
-            </SidebarText>
-            <CloseButton onClick={this.handleCloseClick.bind(this)}>
-              CLOSE
-            </CloseButton>
-            <FeaturedImage
-              onClick={this.handleFeatureClick.bind(this)}
-              src={allImages[this.props.currentFeature - 1].url}
-            />
-          </Sidebar>
-        );
+      if (this.props.mobile) {
+        return false
       }
       else {
-        let collections = this.props.data.data.children[0];
-        let images = collections.posts[0].images.originals 
+        const self = this;
+        const FeaturedImage = styled.img`
+          max-height: 90%;
+          max-width: 90%;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          &:hover {
+            cursor: pointer;
+          }
+        `;
     
-        return (
-          <Sidebar>
-            <SidebarText onClick={this.handleOpenClick.bind(this)}>
-              <span>{featuredNum}</span>
-            </SidebarText>
-            <CloseButton onClick={this.handleCloseClick.bind(this)}>
-              CLOSE
-            </CloseButton>
-            <FeaturedImage
-              onClick={this.handleFeatureClick.bind(this)}
-              src={images[this.props.currentFeature - 1].url}
-            />
-          </Sidebar>
-        );
+        const CloseButton = styled.div`
+          position: absolute;
+          top: 0;
+          right: 0;
+          color: #000;
+          margin: 20px 20px 0 0;
+          &:hover {
+            cursor: pointer;
+          }
+        `;
+  
+        const Sidebar = this.sidebar;
+        const SidebarText = this.sidebarText;
+        let featuredNum = "(" + " " + this.props.currentFeature + " " + ")";
+  
+        if (this.props.numberOfCollections > 1) {
+          const collections = this.props.data.data.children[0];
+          let allImages = [];
+          collections.posts.forEach(x => {
+            x.images.thumbnails.forEach(image => {
+              allImages.push(image);
+            });
+          });
+  
+          return (
+            <Sidebar>
+              <SidebarText onClick={this.handleOpenClick.bind(this)}>
+                <span>{featuredNum}</span>
+              </SidebarText>
+              <CloseButton onClick={this.handleCloseClick.bind(this)}>
+                CLOSE
+              </CloseButton>
+              <FeaturedImage
+                onClick={this.handleFeatureClick.bind(this)}
+                src={allImages[this.props.currentFeature - 1].url}
+              />
+            </Sidebar>
+          );
+        }
+        else {
+          let collections = this.props.data.data.children[0];
+          let images = collections.posts[0].images.originals 
+      
+          return (
+            <Sidebar>
+              <SidebarText onClick={this.handleOpenClick.bind(this)}>
+                <span>{featuredNum}</span>
+              </SidebarText>
+              <CloseButton onClick={this.handleCloseClick.bind(this)}>
+                CLOSE
+              </CloseButton>
+              <FeaturedImage
+                onClick={this.handleFeatureClick.bind(this)}
+                src={images[this.props.currentFeature - 1].url}
+              />
+            </Sidebar>
+          );
+        }
       }
     }
   }

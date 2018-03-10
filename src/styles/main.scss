@@ -15,6 +15,13 @@ html,body {
   &::-webkit-scrollbar { 
     display: none; 
   }
+  @include breakpoint--a {
+    // need to test
+    font-size: 12px;
+  }
+  @include breakpoint--b {
+    font-size: 12px;
+  }
 }
 
 // --- move into styled components

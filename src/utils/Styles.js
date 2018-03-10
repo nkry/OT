@@ -10,8 +10,7 @@ const fadeIn = keyframes`
   }
 `;
 
-// fade animation makes /collections grid flash when sidebar is open?
-// position: absolute
+// make media sizes a variable
 export const PageWrapper = styled.div`
   position: ${props => (props.landingGrid ? "absolute" : "relative")};
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -27,6 +26,11 @@ export const PageWrapper = styled.div`
   @supports not (display: grid) {
     position: relative;
   }
+  @media (max-width: 480px) {
+    height: 100vh;
+    position: ${props => (props.landingGrid ? "absolute" : "relative")};
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
 `;
 
 export const GradientWrapper = styled.div`
@@ -38,6 +42,9 @@ export const GradientWrapper = styled.div`
   position: fixed;
   top: 0;
   background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  @media (max-width: 480px) {
+    width: 100vw;
+  }
 `;
 
 export const ImageCell = styled.div`
@@ -51,6 +58,11 @@ export const ImageCell = styled.div`
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 1.5em;
+  }
+  @media (max-width: 480px) {
+    position: relative;
+    grid-column-start: 2;
+    grid-column-end: 13;
   }
   & span {
     position: absolute;
@@ -71,6 +83,7 @@ export const ImageCell = styled.div`
 `;
 
 // - 5px is visual hack
+// 100vw - 40px is for 20px margin on mobile centered
 export const MenuWrapperOne = styled.div`
   left: 20px;
   width: calc(100% - 90px);
@@ -83,6 +96,9 @@ export const MenuWrapperOne = styled.div`
   display: grid;
   margin: 0;
   height: 50px;
+  @media (max-width: 480px) {
+    width: calc(100vw - 40px);
+  }
   z-index: 3;
   & * > #negative--kern {
     letter-spacing: -0.065em;
@@ -126,6 +142,9 @@ export const MenuWrapperOne = styled.div`
         text-decoration: none;
       }
       &:first-child {
+      }
+      @media (max-width: 480px) {
+        white-space: wrap;
       }
     }
   }`;
@@ -200,4 +219,9 @@ export const VideoCell = styled.div`
     width: 100%;
     height: 100%;
   }
-  `;
+  @media (max-width: 480px) {
+   margin-bottom: 0;
+   grid-column-start: 2;
+   grid-column-end: 13;
+  }
+`;
