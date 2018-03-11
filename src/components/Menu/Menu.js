@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { MenuWrapperOne } from "../../utils/Styles";
 import { MenuWrapperTwo } from "../../utils/Styles";
+import { MenuList } from "../../utils/Styles";
 
 class Menu extends Component {
   constructor(props) {
@@ -63,12 +64,12 @@ class Menu extends Component {
         return (
           <MenuWrapperOne>
             <li onClick={this.handleMenuClick.bind(this, 'collection')} className="collections--close"><Link to="/collection">X</Link></li>
-            <ul>
+            <MenuList>
               <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{staticSingleTitle}</Link></li>
               <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
               <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
               <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
-            </ul>
+            </MenuList>
           </MenuWrapperOne>
         )
       }
@@ -81,24 +82,24 @@ class Menu extends Component {
           return (
             <MenuWrapperOne>
               <li onClick={this.handleMenuClick.bind(this, 'collection')} className="collections--close"><Link to="/collection">X</Link></li>
-              <ul>
+              <MenuList>
                 <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{dynamicSingleTitle}</Link></li>
                 <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
                 <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
                 <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
-              </ul>
+              </MenuList>
             </MenuWrapperOne>
           )
         }
         else {
           return (
             <MenuWrapperTwo>
-              <ul>
+              <MenuList>
                 <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{collectionsTitle}</Link></li>
                 <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
                 <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
                 <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
-              </ul>
+              </MenuList>
             </MenuWrapperTwo>
           )
         }
