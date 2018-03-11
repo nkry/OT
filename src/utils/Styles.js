@@ -156,7 +156,7 @@ export const MenuWrapperOne = styled.div`
     justify-content: space-between;
     padding: 0;
     @supports not (display: grid) {
-      width: calc(100% - 50px);
+      width: 100%;
     }
     @media ${device.mobilePortrait} {  
       width: 100%;

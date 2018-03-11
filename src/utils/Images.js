@@ -27,6 +27,9 @@ export const ImageOne = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      height: 33.3vh;
+      width: auto;
+      max-width: auto;
       margin-left: 20px;
     }
   }
@@ -64,6 +67,9 @@ export const ImageTwo = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      width: auto;
+      height: 33.3vh;
+      max-width: auto;
       margin-left: 20px;
     }
   }
@@ -104,6 +110,9 @@ export const ImageThree = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      width: auto;
+      height: 33.3vh;
+      max-width: auto;
       margin-left: 20px;
     }
   }
@@ -140,6 +149,9 @@ export const ImageFour = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      width: auto;
+      height: 33.3vh;
+      max-width: auto;
       margin-left: 20px;
     }
   }
@@ -176,6 +188,9 @@ export const ImageFive = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      width: auto;
+      height: 33.3vh;
+      max-width: auto;
       margin-left: 20px;
     }
   }
@@ -213,6 +228,9 @@ export const ImageSix = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      width: auto;
+      height: 33.3vh;
+      max-width: auto;
       margin-left: 20px;
     }
   }
@@ -251,6 +269,9 @@ export const ImageSeven = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      width: auto;
+      height: 33.3vh;
+      max-width: auto;
       margin-left: 20px;
     }
   }
@@ -288,6 +309,9 @@ export const ImageEight = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      width: auto;
+      height: 33.3vh;
+      max-width: auto;
       margin-left: 20px;
     }
   }
@@ -326,6 +350,9 @@ export const ImageNine = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      width: auto;
+      height: 33.3vh;
+      max-width: auto;
       margin-left: 20px;
     }
   }
@@ -363,6 +390,9 @@ export const ImageTen = styled.img`
       margin-left: 20px;
     }
     @media ${device.mobileLandscape} {
+      width: auto;
+      height: 33.3vh;
+      max-width: auto;
       margin-left: 20px;
     }
   }
