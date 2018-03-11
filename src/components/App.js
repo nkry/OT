@@ -6,8 +6,8 @@ import MenuContainer from './Menu/MenuContainer'
 import SidebarContainer from "./Sidebar/SidebarContainer";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { breakpoints } from "../utils/Breakpoints";
-import { device } from "../utils/Breakpoints";
+import { breakpoints } from "../utils/Rules";
+import { device } from "../utils/Rules";
 
 const mapStateToProps = function(state, prop) {
   return {
@@ -27,19 +27,6 @@ const mapDispatchToProps = function(dispatch) {
 class Container extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    const self = this;
-    let ww = window.innerWidth;
-    let resizeTimer;
-
-    window.addEventListener("resize", () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        self.props.action.checkDeviceWidth(ww);
-      }, 250);
-    });
   }
 
   handleLogoClick() {
@@ -97,7 +84,7 @@ class Container extends Component {
 
     const Logo = styled.img`
       z-index: 2;
-      width: 8px;
+      width: 7px;
       position: fixed;
       max-height: 70%;
       top: 50%;

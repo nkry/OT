@@ -56,17 +56,15 @@ class Menu extends Component {
   }
 
   render() {
-      // title itself will be dynamic  
-      let singleTitle = this.props.mobile ? <div>S/S <span id="negative--kern">’18</span></div> : <div>SPRING/SUMMER <span id="negative--kern">’18</span></div>
       let collectionsTitle = "COLLECTIONS"
+      let staticSingleTitle = this.props.mobile ? <div>S/S <span id="negative--kern">’18</span></div> : <div>SPRING/SUMMER <span id="negative--kern">’18</span></div>
 
       if (this.props.data.length === 0) {
-        // rendering original wrap in for now — may need to change this in future
         return (
           <MenuWrapperOne>
             <li onClick={this.handleMenuClick.bind(this, 'collection')} className="collections--close"><Link to="/collection">X</Link></li>
             <ul>
-              <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{singleTitle}</Link></li>
+              <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{staticSingleTitle}</Link></li>
               <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
               <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
               <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
@@ -75,13 +73,16 @@ class Menu extends Component {
         )
       }
       else {
+        let mobileTitle = this.props.data.data.children[0].posts[0].content.condensedtitle
+        let dynamicSingleTitle = this.props.mobile ? mobileTitle : <div>SPRING/SUMMER <span id="negative--kern">’18</span></div>
         let multipleCollections = this.props.numberOfCollections > 1 ? true : false;
+
         if (!multipleCollections) {
           return (
             <MenuWrapperOne>
               <li onClick={this.handleMenuClick.bind(this, 'collection')} className="collections--close"><Link to="/collection">X</Link></li>
               <ul>
-                <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{singleTitle}</Link></li>
+                <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{dynamicSingleTitle}</Link></li>
                 <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
                 <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
                 <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>

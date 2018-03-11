@@ -5,13 +5,18 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     const self = this;
+    this.state = {
+      mouseX: 400,
+      mouseY: 400,
+      showCursor: false
+    }
     this.sidebar = styled.div`
       width: calc(100vw - 45px);
       height: 100vh;
       background: #fff;
       position: fixed;
       z-index: 11;
-      transition: left 1s ease-out;
+      transition: left .85s ease-out;
       left: ${props =>
         self.props.sidebarOpen ? "45px" : "calc(100vw - 45px)"};
     `;
@@ -38,6 +43,16 @@ class Sidebar extends Component {
         cursor: pointer;
       }
     `;
+    this.cursorText = styled.div`
+      position: absolute;
+      top: ${props => (props.topPos + 'px')};
+      left: ${props => (props.leftPos + 'px')};
+      display: ${props => (self.state.showCursor ? 'inline-block' : 'none')};
+      z-index: 5;
+      background: red;
+      margin: 0;
+      padding: 0;
+    `; 
   }
 
   componentDidMount() {
@@ -121,18 +136,40 @@ class Sidebar extends Component {
     }
   }
 
+  handleMouseMove(event) {
+    this.setState({
+      mouseX: event.pageX - 40,
+      mouseY: event.pageY
+    })
+  }
+
+  handleMouseEnter() {
+    console.log("mouse enter")
+    this.setState({
+      showCursor: true
+    })
+  }
+
+  handleMouseLeave() {
+    console.log("mouse left")
+    this.setState({
+      showCursor: false
+    })
+  }
+
   render() {
     if (this.props.data.length === 0) {
       // loader 
       return <div></div>
     }
     else {
-
       if (this.props.mobile) {
         return false
       }
       else {
         const self = this;
+
+        // cursor: none
         const FeaturedImage = styled.img`
           max-height: 90%;
           max-width: 90%;
@@ -187,7 +224,11 @@ class Sidebar extends Component {
         else {
           let collections = this.props.data.data.children[0];
           let images = collections.posts[0].images.originals 
-      
+
+          // w.i.p — floating text 'NEXT/RPEV' for both
+          // const Cursor = this.cursorText
+          // <Cursor showCursor={this.state.showCursor} leftPos={this.state.mouseX} topPos={this.state.mouseY}>NEXT</Cursor>
+
           return (
             <Sidebar>
               <SidebarText onClick={this.handleOpenClick.bind(this)}>
@@ -197,6 +238,9 @@ class Sidebar extends Component {
                 CLOSE
               </CloseButton>
               <FeaturedImage
+                onMouseEnter={this.handleMouseEnter.bind(this)}
+                onMouseLeave={this.handleMouseLeave.bind(this)}
+                onMouseMove={this.handleMouseMove.bind(this)}
                 onClick={this.handleFeatureClick.bind(this)}
                 src={images[this.props.currentFeature - 1].url}
               />

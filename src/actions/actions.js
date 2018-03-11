@@ -27,6 +27,7 @@ export const RESPONSE = "RESPONSE";
 export const PAYLOAD = "PAYLOAD";
 
 export function checkDeviceWidth(x) {
+  console.log("now check device width")
   return {
     type: "SET_DEVICE_WIDTH",
     x
@@ -165,6 +166,14 @@ export function getData() {
         let collections = data.children[0].posts
         let length = collections.length
         dispatch(setCollectionsNumber(length));
+
+        let count = 0;
+        collections.map((x, key) => {
+          x.images.thumbnails.map((i, key) => {
+            count += 1;
+          });
+        });
+        dispatch(setCollectionLength(count));
         dispatch(passData(response));
       })
       .then(response => {

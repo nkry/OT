@@ -106,9 +106,6 @@ class Collection extends Component {
 
   componentDidMount() {
     this.props.setCurrentPage("collection");
-    let data = this.props.data.data.children[0];
-    let count = this.countImages(data)
-    this.props.setCollectionLength(count);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -141,9 +138,17 @@ class Collection extends Component {
       n += 1;
       i += 1;
       let count = key >= this.max ? i : key;
-      if (this.props.mobile) {
+
+      let portraitMobile = this.props.mobile 
+      let landscapeMobile = window.innerWidth <= 768 && window.innerHeight < window.innerWidth ? true : false
+
+      if (portraitMobile) {
         row += 1;
-      } else {
+      }
+      else if (landscapeMobile) {
+        row += 1
+      }
+      else {
         if (key % 2 === 0) {
           row += 1;
         }

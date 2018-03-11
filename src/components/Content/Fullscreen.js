@@ -60,6 +60,9 @@ class Fullscreen extends Component {
       left: 0;
       width: 100vw;
       height: 100vh;
+      & button {
+        display: none;
+      }
     `;
 
     const HideCursor = styled.div`
@@ -74,7 +77,9 @@ class Fullscreen extends Component {
 
     let data = this.props.data;
     let video = data.posts[0].content.url
-    let videoId = this.splitId(video);
+    let videoId = this.splitId(video);  
+    // let videoId = 165554561
+    // console.log("video id is", videoId)
 
     // add 'PAUSE' / 'PLAY' cursors?
     return (

@@ -20,9 +20,17 @@ import * as actions from "./actions/actions";
 // init store 
 const StoreInstance = Store();
 StoreInstance.dispatch(actions.checkDeviceWidth(window.innerWidth));
-
-// make initial dispatch 
 StoreInstance.dispatch(actions.getData());
+
+// event listeners
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    let ww = window.innerWidth
+    StoreInstance.dispatch(actions.checkDeviceWidth(ww));
+  }, 250);
+});
 
 // set up routes
 const Routes = () => {

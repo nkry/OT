@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { breakpoints } from './Breakpoints'
-import { device } from './Breakpoints'
+import { breakpoints } from './Rules'
+import { device } from './Rules'
 
 const fadeIn = keyframes`
   0% {
@@ -106,6 +106,9 @@ export const ImageCell = styled.div`
   }
   &:hover {
     cursor: pointer;
+  }
+  &:last-child {
+    margin-bottom: .75em;
   }
 `;
 

@@ -38,8 +38,11 @@ class Image extends Component {
   }
   
   returnLoadStatus(time) {
-    const self = this;
-    this.props.updateCollectionLoaded()
+    const self = this; 
+    
+    if (!this.props.collectionCached) {
+      this.props.updateCollectionLoaded()
+    }
     // now compare length loaded against length of collections
     if ((this.props.collectionLength - 1) === this.props.collectionLoaded) {
       this.props.cacheCollection()

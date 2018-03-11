@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { breakpoints } from "./Breakpoints";
-import { device } from "./Breakpoints";
+import { breakpoints } from "./Rules";
+import { device } from "./Rules";
 
 // fallback for no grid support — iterate between 2 layouts of stacked vertically + stacked horizontally
 export const ImageOne = styled.img`
