@@ -157,8 +157,6 @@ export const VideoCell = styled.div`
   }
 `;
 
-
-
 export const MenuWrapperOne = styled.div`
   left: 20px;
   width: calc(100% - 90px);
@@ -183,7 +181,7 @@ export const MenuWrapperOne = styled.div`
     padding: 0;
     list-style: none;
     display: flex;
-    flex: 0 1;
+    flex: 0 1 auto;
     justify-content: space-between;
     white-space: no-wrap;
     align-items: center;
@@ -228,7 +226,7 @@ export const MenuList = styled.ul`
   & li {
     margin: -5px 0 0 0;
     padding: 0;
-    flex: 0 1;
+    flex: 0 1 auto;
     display: inline;
     white-space: nowrap;
     list-style: none;
@@ -236,10 +234,8 @@ export const MenuList = styled.ul`
       color: black;
       text-decoration: none;
     }
-    &:first-child {
-    }
     @supports not (display: grid) {
-      flex: none;
+      flex: 0 1 auto;
     }
     @media ${device.mobilePortrait} {  
       white-space: wrap;

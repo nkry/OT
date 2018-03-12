@@ -21,7 +21,6 @@ export const ImageOne = styled.img`
     max-height: 45%;
     width: auto;
     max-width: calc(100vw - 60px);
-    background: red;
     margin-bottom: 1em;
     @media ${device.mobilePortrait} {
       margin-left: 20px;
@@ -34,8 +33,9 @@ export const ImageOne = styled.img`
     }
   }
   @media ${device.mobilePortrait} {
+    grid-row-start: 1;
     grid-column-start: 2;
-    grid-column-end: 8;
+    grid-column-end: 13;
   }
   @media ${device.mobileLandscape} {
     grid-column-start: 2;
@@ -75,8 +75,8 @@ export const ImageTwo = styled.img`
   }
   @media ${device.mobilePortrait} {
     grid-row-start: 3;
-    grid-column-start: 6;
-    grid-column-end: 12;
+    grid-column-start: 2;
+    grid-column-end: 13;
   }
   @media ${device.mobileLandscape} {
     grid-row-start: 3;
@@ -117,11 +117,12 @@ export const ImageThree = styled.img`
     }
   }
   @media ${device.mobilePortrait} {
+    grid-row-start: 1;
     grid-column-start: 2;
-    grid-column-end: 8;
+    grid-column-end: 13;
   }
   @media ${device.mobileLandscape} {
-    grid-row-start: 3;
+    grid-row-start: 2;
     grid-column-start: 2;
     grid-column-end: 8;
     width: auto;
@@ -156,8 +157,9 @@ export const ImageFour = styled.img`
     }
   }
   @media ${device.mobilePortrait} {
-    grid-column-start: 4;
-    grid-column-end: 10;
+    grid-row-start: 3;
+    grid-column-start: 2;
+    grid-column-end: 13;
   }
   @media ${device.mobileLandscape} {
     grid-column-start: 4;
@@ -195,8 +197,9 @@ export const ImageFive = styled.img`
     }
   }
   @media ${device.mobilePortrait} {
-    grid-column-start: 3;
-    grid-column-end: 9;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-column-end: 13;
   }
   @media ${device.mobileLandscape} {
     grid-column-start: 3;
@@ -235,8 +238,9 @@ export const ImageSix = styled.img`
     }
   }
   @media ${device.mobilePortrait} {
-    grid-column-start: 3;
-    grid-column-end: 9;
+    grid-column-start: 2;
+    grid-column-end: 13;
+    grid-row-start: 3;
   }
   @media ${device.mobileLandscape} {
     grid-column-start: 3;
@@ -276,8 +280,11 @@ export const ImageSeven = styled.img`
     }
   }
   @media ${device.mobilePortrait} {
+    justify-self: start;
+    align-self: start;
+    grid-row-start: 1;
     grid-column-start: 2;
-    grid-column-end: 8;
+    grid-column-end: 13;
   }
   @media ${device.mobileLandscape} {
     grid-column-start: 2;
@@ -316,9 +323,9 @@ export const ImageEight = styled.img`
     }
   }
   @media ${device.mobilePortrait} {
-    grid-row-start: 1;
-    grid-column-start: 5;
-    grid-column-end: 11;
+    grid-row-start: 3;
+    grid-column-start: 2;
+    grid-column-end: 13;
   }
   @media ${device.mobileLandscape} {
     grid-row-start: 1;
@@ -357,8 +364,9 @@ export const ImageNine = styled.img`
     }
   }
   @media ${device.mobilePortrait} {
-    grid-column-start: 6;
-    grid-column-end: 12;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-column-end: 13;
   }
   @media ${device.mobileLandscape} {
     grid-column-start: 6;
@@ -397,8 +405,9 @@ export const ImageTen = styled.img`
     }
   }
   @media ${device.mobilePortrait} {
-    grid-column-start: 6;
-    grid-column-end: 12;
+    grid-row-start: 3;
+    grid-column-start: 2;
+    grid-column-end: 13;
   }
   @media ${device.mobileLandscape} {
     grid-column-start: 6;
