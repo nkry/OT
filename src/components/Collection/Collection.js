@@ -156,6 +156,7 @@ class Collection extends Component {
 
       return (
         <Image
+          mobile={this.props.mobile}
           collectionLength={this.props.collectionLength}
           collectionLoaded={this.props.collectionLoaded}
           collectionCached={this.props.collectionCached}

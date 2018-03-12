@@ -56,6 +56,7 @@ class Image extends Component {
   }
 
   render() {
+    let imageNumber = this.props.mobile ? false :  <span>( {this.props.number} )</span>
     return (
       <ImageCell
         cached={this.props.collectionCached}
@@ -69,7 +70,7 @@ class Image extends Component {
         onMouseOver={this.handleMouseOver.bind(this, this.props.index)}
         onMouseLeave={this.handleMouseLeave.bind(this)}
       >
-        <span>( {this.props.number} )</span>
+        {imageNumber}
         <img src={this.props.src} />
       </ImageCell>
     );
