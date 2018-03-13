@@ -58,7 +58,7 @@ class Menu extends Component {
 
   render() {
       let collectionsTitle = "COLLECTIONS"
-      let staticSingleTitle = this.props.mobile ? <div>S/S <span id="negative--kern">’18</span></div> : <div>SPRING/SUMMER <span id="negative--kern">’18</span></div>
+      let staticSingleTitle = this.props.mobile ? <div>S/S <span id="negative--kern">’18</span></div> : <div>SPRING SUMMER 2<span id="negative--kern">018</span></div>
 
       if (this.props.data.length === 0) {
         return (
@@ -75,7 +75,7 @@ class Menu extends Component {
       }
       else {
         let mobileTitle = this.props.data.data.children[0].posts[0].content.condensedtitle
-        let dynamicSingleTitle = this.props.mobile ? mobileTitle : <div>SPRING/SUMMER <span id="negative--kern">’18</span></div>
+        let dynamicSingleTitle = this.props.mobile ? mobileTitle : <div>SPRING SUMMER 2<span id="negative--kern">018</span></div>
         let multipleCollections = this.props.numberOfCollections > 1 ? true : false;
 
         if (!multipleCollections) {

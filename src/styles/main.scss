@@ -24,6 +24,9 @@ html,body {
   @include breakpoint--b {
     font-size: 12px;
   }
+  @include breakpoint--e {
+    font-size: 14px;
+  }
 }
 
 // --- move into styled components

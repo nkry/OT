@@ -163,10 +163,12 @@ export function getData() {
       .get(endpoint)
       .then(response => {
         let data = response.data
+        let landingImages = data.images.originals;
+        let maxLanding = landingImages.length / 2;
+        dispatch(setMaxLanding(maxLanding));
         let collections = data.children[0].posts
         let length = collections.length
         dispatch(setCollectionsNumber(length));
-
         let count = 0;
         collections.map((x, key) => {
           x.images.thumbnails.map((i, key) => {
