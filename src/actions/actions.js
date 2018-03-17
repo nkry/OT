@@ -1,9 +1,11 @@
 import axios from "axios";
 
-const endpoint =
-  process.env.NODE_ENV === "production"
-    ? "http://dev.oveliatranstoto.nkry.info/cms/api/home"
-    : "http://localhost:9000/api/home";
+// const endpoint =
+//   process.env.NODE_ENV === "production"
+//     ? "http://dev.oveliatranstoto.nkry.info/cms/api/home"
+//     : "http://localhost:9000/api/home";
+
+const endpoint = "http://dev.oveliatranstoto.nkry.info/cms/api/home";
 
 export const SET_DEVICE_WIDTH = "SET_DEVICE_WIDTH";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
