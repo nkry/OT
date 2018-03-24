@@ -62,13 +62,15 @@ class Menu extends Component {
 
       if (this.props.data.length === 0) {
         return (
+          // disable content page (temp)
+          // <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
           <MenuWrapperOne>
             <li onClick={this.handleMenuClick.bind(this, 'collection')} className="collections--close"><Link to="/collection">X</Link></li>
             <MenuList>
               <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{staticSingleTitle}</Link></li>
               <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
               <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
-              <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
+              <li>CONTENT</li>
             </MenuList>
           </MenuWrapperOne>
         )
@@ -79,6 +81,8 @@ class Menu extends Component {
         let multipleCollections = this.props.numberOfCollections > 1 ? true : false;
 
         if (!multipleCollections) {
+          // disable content page (temp) 
+          // <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
           return (
             <MenuWrapperOne>
               <li onClick={this.handleMenuClick.bind(this, 'collection')} className="collections--close"><Link to="/collection">X</Link></li>
@@ -86,19 +90,21 @@ class Menu extends Component {
                 <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{dynamicSingleTitle}</Link></li>
                 <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
                 <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
-                <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
+                <li>CONTENT</li>
               </MenuList>
             </MenuWrapperOne>
           )
         }
         else {
           return (
+           // disable content page (temp) 
+           // <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
             <MenuWrapperTwo>
               <MenuList>
                 <li onClick={this.handleMenuClick.bind(this, 'collection')}><Link to="/collection">{collectionsTitle}</Link></li>
                 <li ref="stockistsLink" id="stockists--link" onClick={this.handleMenuClick.bind(this, 'stockists')}><Link to="/stockists">STOCKISTS</Link></li>
                 <li ref="contactLink" id="contact--link" onClick={this.handleMenuClick.bind(this, 'contact')}><Link to="/contact">CONTACT</Link></li>
-                <li onClick={this.handleMenuClick.bind(this, 'content')}><Link to="/content">CONTENT</Link></li>
+                <li>CONTENT</li>
               </MenuList>
             </MenuWrapperTwo>
           )

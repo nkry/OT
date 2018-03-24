@@ -11,6 +11,9 @@ export const ImageOne = styled.img`
   user-select: none;
   opacity: ${props => (props.loaded ? 1 : 0)};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     grid-column-start: none;
     grid-column-end: none;
@@ -55,6 +58,9 @@ export const ImageTwo = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     display: block;
     position: relative;
@@ -97,6 +103,9 @@ export const ImageThree = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     display: block;
     position: relative;
@@ -138,6 +147,9 @@ export const ImageFour = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     display: block;
     position: relative;
@@ -177,6 +189,9 @@ export const ImageFive = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     display: block;
     position: relative;
@@ -219,6 +234,9 @@ export const ImageSix = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     display: block;
     position: relative;
@@ -260,6 +278,9 @@ export const ImageSeven = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     display: block;
     position: relative;
@@ -304,6 +325,9 @@ export const ImageEight = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     display: block;
     position: relative;
@@ -344,6 +368,9 @@ export const ImageNine = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     display: block;
     position: relative;
@@ -386,6 +413,9 @@ export const ImageTen = styled.img`
   user-select: none;
   opacity: ${props => props.loaded ? 1 : 0};
   transition: opacity .15s linear;
+  &:hover {
+    cursor: pointer;
+  }
   @supports not (display: grid) {
     display: block;
     position: relative;

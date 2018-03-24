@@ -23,11 +23,12 @@ class LandingImage extends Component {
   }
 
   handleImageLoad() {
+    console.log("handle landing load")
     this.setState({
       loaded: true
     })
   }
-
+  
   render() {
     let style = this.props.style
     const self = this 

@@ -239,6 +239,9 @@ export const MenuList = styled.ul`
     display: inline;
     white-space: nowrap;
     list-style: none;
+    &:hover {
+      cursor: pointer;
+    }
     & a {
       color: black;
       text-decoration: none;
