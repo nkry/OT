@@ -7,5 +7,6 @@ export const breakpoints = {
 
 export const device = {
   mobilePortrait: `(max-width: ${breakpoints.a}) and (orientation: portrait)`,
-  mobileLandscape: `(max-width: ${breakpoints.b}) and (orientation: landscape)`
+  mobileLandscape: `(max-width: ${breakpoints.b}) and (orientation: landscape)`,
+  tabletPortrait: `(max-width: ${breakpoints.b}) and (min-width: calc(${breakpoints.a} + 1px)) and (orientation: portrait)`
 };

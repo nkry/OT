@@ -60,19 +60,20 @@ export const GradientWrapper = styled.div`
   }
 `;
 
+// &:hover {
+//   & img {
+//     opacity: 0;
+//   }
+//   & span {
+//     opacity: 1;
+//   }
+// }
+
 export const ImageCell = styled.div`
   grid-column-start: ${props => props.start};
   grid-column-end: ${props => props.end};
   grid-row-start: ${props => props.row};
   position: relative;
-  &:hover {
-    & img {
-      opacity: 0;
-    }
-    & span {
-      opacity: 1;
-    }
-  }
   @supports not (display: grid) {
     width: 30vw;
     max-width: 540px;
